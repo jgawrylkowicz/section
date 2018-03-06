@@ -29,14 +29,14 @@ $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
 $card-border-radius: 6px
-$background-color: #EDF1F4
+$background-color: #f8fcff
 $sidebar-background-color: white
 $card-background: rgb(255,255,255)
 $dark-mode-card: rgba(44,50,58,1)
 
 $post-width: 28.75em
 $post-height: 32.875em
-$post-padding: 18px
+$post-padding: 24px
 
 $content-grid-gap: 36px
 $content-grid-padding: 1em
@@ -159,7 +159,7 @@ h4
   font-size: 1em
 
 p
-  font-weight: 300
+  font-weight: 400
   overflow-wrap: break-word
   word-wrap: break-word
   -ms-word-break: break-all
@@ -261,16 +261,16 @@ ul
   vertical-align: middle
   z-index: 1200
   height: 100%
-  flex-grow: 1
-  display: flex
-  overflow-y: hidden
-  flex-shrink: 1
+  //flex-grow: 1
+  //display: flex
+  //overflow-y: hidden
+  //flex-shrink: 1
   background-color: $sidebar-background-color
   box-shadow: $shadow
   position: fixed
-  align-items: flex-start 
-  flex-flow: wrap
-  flex-direction: column
+  //align-items: flex-start 
+  //flex-flow: wrap
+  //flex-direction: column
   left: $sidebar-width - (2 * $sidebar-width)
   width: $sidebar-width
   padding-top: 4em
@@ -297,10 +297,10 @@ ul
   border-left: 5px solid transparent
   &:hover
     color: #6F64F2
-    background: rgba(0,0,0,.05)
-    border-left: 5px solid #6F64F2
-    .nav_item_icon
-      color: #ABA8F2
+    background: rgba(0,0,0,.01)
+    border-left: 5px solid #ABA8F2
+    .nav_item__icon
+      color: #ABA8F2 !important
   &:active
     border-left: 5px solid #E8676A
     background: #FFE6E8
@@ -314,7 +314,7 @@ ul
 .nav-item__info
   line-height: .25
   font-size: 1em
-  font-weight: 300
+  font-weight: 400
   color: #AAB9C5
   position: absolute
 
@@ -350,6 +350,13 @@ ul
 .header__close, .header__sns, .header__nav
   width: 100%  
   padding: 12px 0
+
+.header__nav .active
+  .nav-item
+    
+    border-left: 5px solid #6F64F2
+    .nav_item_icon
+      color: #ABA8F2
 
 // Short text about the site
 .header__about--greeting
@@ -413,11 +420,11 @@ ul
   @media only screen and (min-width: $break-m) and (max-width: $break-xxl)  
     grid-template-columns: repeat(auto-fit, minmax(22em, 1fr))
   @media only screen and (min-width: $break-xxl) and (max-width: $break-xxxl)
-    grid-template-columns: repeat(3,1fr)
+    grid-template-columns: repeat(2,1fr)
   @media only screen and (min-width: $break-xxxl) and (max-width: $break-uw)
-    grid-template-columns: repeat(4,1fr)
+    grid-template-columns: repeat(3,1fr)
   @media only screen and (min-width: $break-uw)  
-    grid-template-columns: repeat(5,1fr)
+    grid-template-columns: repeat(4,1fr)
 
 .card
   box-sizing: border-box
@@ -428,17 +435,19 @@ ul
   background: $card-background
   border-radius: $card-border-radius
   box-shadow: $shadow
+  transition-property: box-shadow
+  transition-duration: .3s
+  transition-timing-function: ease-in-out
 
 .post
   color: white
   width: 100%
   display: inline-block
   position: relative
-  &:hover
 
 .post::after
   width: 100%
-  padding-top: 115%
+  padding-top: 61%
   display: block
   content: ''
 
@@ -515,7 +524,7 @@ ul
   @media only screen and (max-width: $break-s)
     padding: 1em
 
-.post--container
+.post--container, .post--onhover
   display: flex
   flex-direction: column
   padding: $post-padding
@@ -526,6 +535,62 @@ ul
   right: 0
   height: 100%
   width: 100%
+
+.post--onhover
+  opacity: 0
+  z-index: 1000
+  background: rgba(41,60,80,.9)
+  transition-property: opacity
+  transition-duration: .3s
+  transition-timing-function: ease-in-out
+
+.post:hover
+  box-shadow: 0 8px 32px 0 rgba(50,50,50,0.6)
+
+.post:hover > .post--onhover
+  opacity: 1
+  @supports (backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))
+    backdrop-filter: blur(6px)
+    -webkit-backdrop-filter: blur(6px)
+
+.post:hover > .post--container
+  //filter: blur(12px)
+
+// .post--background
+//   position: absolute
+//   left: 0
+//   top: 10%
+//   right: 0
+//   transform: skewY(-12deg)
+//   pointer-events: none
+//   display: grid
+//   grid-template-columns: 1fr 1fr 1fr 1fr
+//   grid-template-rows: 1fr 1fr 1fr 1fr 
+//   height: 100%
+//   width: 100%
+
+
+// .post--background__stripe--1, .post--background__stripe--2, .post--background__stripe--3, .post--background__stripe--4
+//   height: 100%
+//   width: 100%
+  
+
+// .post--background__stripe--1
+//   background:  linear-gradient(110deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%)
+//   grid-column: 1 / 5
+//   grid-row-start: 1
+
+// .post--background__stripe--2
+//   background: linear-gradient(110deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 100%)
+//   grid-column: 3 / 5
+//   grid-row-start: 2
+
+// .post--background__stripe--3
+//   background: linear-gradient(110deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.2) 100%)
+//   grid-column: 3 / 5
+//   grid-row-start: 4
+
+
 
 .post__header, .post__excerpt, .post__header--thumbnail, .post__excerpt--thumbnail
   margin-bottom: .5em
@@ -556,7 +621,7 @@ ul
 
 .post__header
   color: #293C50 
-  border-bottom: 1px solid rgba(0,0,0,.2)
+  //border-bottom: 1px solid rgba(0,0,0,.2)
       
 .post__header--tags, .article__banner--tags
   color: #5F7288
@@ -570,7 +635,7 @@ ul
 
 .post__header--thumbnail
   color: white
-  border-bottom: 1px solid rgba(255,255,255,.2)
+  //border-bottom: 1px solid rgba(255,255,255,.2)
 
 .post__excerpt, .post__excerpt--thumbnail
   grid-row-start: 3
@@ -579,7 +644,7 @@ ul
     margin: 0
 
 .post__excerpt--thumbnail
-  -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0))
+  // -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0))
   overflow-y: hidden
   color: white
 
@@ -633,8 +698,6 @@ ul
   transition-duration: .15s
   transition-timing-function: ease-in-out
   &:hover
-    -webkit-transform: translateY(-2px) scale(1.02, 1.02)
-    transform: translateY(-2px) scale(1.02, 1.02)
     box-shadow: 0 3px 12px rgba(50,50,50,0.2)
   @media screen and (max-width: $break-m)
     padding: .5em 1em

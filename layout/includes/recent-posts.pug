@@ -4,10 +4,17 @@ div(class="posts")
         -let background = (post.background) ? post.background : theme.thumbnail.default;
         -let thumbnail_modifier = ''
         div(class="card post fade-in", style={background: background})
+          //- div(class="post--background")
+          //-   div(class="post--background__stripe--1")
+          //-   div(class="post--background__stripe--2")
+          //-   div(class="post--background__stripe--3")
+          //-   div(class="post--background__stripe--4")
+          
           div(class="post--container")
             if post.thumbnail
               img(class="post__thumbnail", src=post.thumbnail width="100%" height="100%")
               -thumbnail_modifier = '--thumbnail'
+          div(class="post--onhover")
             div(class="post__header" + thumbnail_modifier)
               div(class="post__header--title")
                 h1
@@ -30,5 +37,7 @@ div(class="posts")
               if post.heroku
                   a(class="button--alt" + thumbnail_modifier, href=post.heroku)
                     i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
+       
+           
           
         

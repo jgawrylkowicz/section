@@ -42,17 +42,10 @@ $('body,html').click(function(event){
   $('#header').removeClass('show-header');
 });
 
-// Observer for dectecting a change of style on body - Flowtype in this case
-var observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutationRecord) {
-    document.onload = $('body').css("opacity", 1);
-  });    
-});
-
-observer.observe(document.body, { attributes : true, attributeFilter : ['style'] });
-
 //Flowtype.js
 $('body').flowtype({
    minFont : 12,
    maxFont : 15
 });
+
+document.onload = $('body').css("opacity", 1);

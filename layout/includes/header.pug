@@ -24,7 +24,8 @@
   
   ul(class="header__nav")
     each values, label in theme.menu
-      li
+      - active = (label == 'home') ? 'active' : ''
+      li(class=active)
         a(href=values.url data-pjax class="nav-item")
           i(class="fa fa-lg nav-item__icon " + values.icon)&attributes({'aria-hidden': 'true'})
           div
