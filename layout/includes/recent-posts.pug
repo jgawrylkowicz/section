@@ -11,8 +11,8 @@ div(class="posts")
       -let thumbnail_modifier = ''
       if post.thumbnail
         -thumbnail_modifier = '--thumbnail'
-      
-      div(class="post fade-in")
+
+      div(class="post fade-in" )
         div(class="post-container")
           div(class="post__header" + thumbnail_modifier,  style={background: background})
             div(class="post__header--title")
@@ -40,5 +40,4 @@ div(class="posts")
           div(class="post__footer")
             div(class='post__excerpt')
               !=post.description
-            //a(class='post__link', data-pjax href=config.root + post.path)
-              i(class="fa fa-arrow-right fa-lg header-link__icon")&attributes({'aria-hidden': 'true'})
+            a(class='post__link', data-pjax href=config.root + post.path)="More"

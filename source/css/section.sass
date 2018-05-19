@@ -114,6 +114,7 @@ code
   overflow: auto
   padding: 0
 
+
 a
   color: inherit
   text-decoration: none
@@ -178,6 +179,9 @@ ul
   grid-template-columns: auto 480px 480px auto
   width: 100%   
   height: 100% 
+  //scroll-snap-type: mandatory
+  //scroll-snap-destination: 100% 0%
+  //scroll-snap-points-y: repeat(100%)
   @media only screen and (min-width: $break-m) and (max-width: $break-l)
     grid-template-columns: 2em auto 2em
     grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . "
@@ -216,6 +220,8 @@ ul
     grid-area: projects
 
 .contact, .projects, .welcome 
+  //& > div:nth-child(1)
+    //scroll-snap-align: start
   & > div:nth-child(1), 
   & > div:nth-child(2)
     margin: 5rem 0
@@ -679,13 +685,26 @@ ul
   color:  #5F7288 
   align-self: flex-start
   justify-self: flex-end
+  overflow-wrap: break-word
+  word-wrap: break-word
+  -ms-word-break: break-all
+  word-break: break-word
+  -ms-hyphens: auto
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  hyphens: auto
   p
     margin: 0
    
 
 .post__link
   color: #293C50
-  align-self: flex-end
+  position: absolute
+  right: 2em
+  bottom: 2em
+  //padding: .5em 1em
+  //border: 1px solid rgba(0,0,0,.3)
+  //border-radius: 3px
   text-transform: uppercase
   font-family: 'Colfax Medium'
   font-weight: normal
@@ -826,6 +845,4 @@ ul
   right: 100%
   width: 100%
   height: 2px
-  -webkit-filter: drop-shadow(0 1px 2px #6F64F2)
-  filter: drop-shadow(0 1px 2px #6F64F2)
 

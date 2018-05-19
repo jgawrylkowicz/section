@@ -881,6 +881,14 @@ ul {
   color: #5F7288;
   align-self: flex-start;
   justify-self: flex-end;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .post__excerpt p {
@@ -889,7 +897,9 @@ ul {
 
 .post__link {
   color: #293C50;
-  align-self: flex-end;
+  position: absolute;
+  right: 2em;
+  bottom: 2em;
   text-transform: uppercase;
   font-family: 'Colfax Medium';
   font-weight: normal;
@@ -1070,7 +1080,5 @@ ul {
   right: 100%;
   width: 100%;
   height: 2px;
-  -webkit-filter: drop-shadow(0 1px 2px #6F64F2);
-  filter: drop-shadow(0 1px 2px #6F64F2);
 }
 /*# sourceMappingURL=section.css.map */

@@ -1,32 +1,19 @@
-# sidebar
-Sidebar is a simple theme for Hexo — static blog generator framework — that uses pug, sass and pjax for asynchronous loadings. 
+# Section
+Section is a simple theme for Hexo — static blog generator framework — that uses pug, sass and pjax for asynchronous loadings. This theme offers a much simplified version of the portfolio page I've been working on. The user interaction is based around sections which make the site easier to navigate, especially on mobile. 
 
+## TO-DO
 
-### TO-DO
-* Remove variables from the posts
+### Performance
 * Work out the performance issues on some platforms
 * Compress and minimize the files, reduce the overall weight of the theme
-* Sidebar: onblur and focus events does not seem to work all the time
-* Add more customization options in the config file
-* Add animations to pjax 
 * Add handling events for mobile browsers (ontouch, ontap)
-* Split css in desktop and mobile versions
 * Compress the class names
+* Lazy loading for images
+* Loading images based on the client's display size and resolution
 
-### v0.3.0
-* New design fully implemented
-* Added a navigation bar to the top 
-* New card design (for portrait and landscap) & animation
-* New article design
-* Different sidebar behaviour and animations
-* Removed query dependency (pjax jquery -> standalone pjax)
+### UI / UX
+* Add more customization options in the config file
 
-### v0.2.0
-* Redesigned header
-* Updated layout 
-* Fixes in the html structure (img tags)
-* Responsive font sizes based on breaking points
-* Fixed padding issues 
-
-### v0.1.0
+### Other
+* Get a better score than https://developers.google.com/speed/pagespeed/insights/ - meaning fix all the issues
 
