@@ -14,7 +14,8 @@ header:
     - "University of Vienna, Austria"
   slogan:
     - "Hello, nice to meet you!"
-    - "I find web technologies fascinating and aspire to work as a full-stack developer in the future. Here you can find some projects that I've been working on."
+    - "My name is Jakub Gawrylkowicz ... "
+    - "... and I am currently living and studying in Vienna. I find web technologies fascinating and aspire to work as a full-stack developer in the future. "
   location: Vienna, Austria
 
 img:
@@ -24,6 +25,12 @@ img:
 # main menu navigation
 menu:
   Home:
+    url: /
+    icon: fa-home
+  Projects:
+    url: /
+    icon: fa-home
+  Contact:
     url: /
     icon: fa-home
 
@@ -68,7 +75,7 @@ favicon: /img/logo-128.png
 
 # stylesheets loaded in the <head>
 stylesheets:
-- /css/sidebar.css
+- /css/section.css
 - /css/fontawesome.min.css
 
 # scripts loaded in the end of the body

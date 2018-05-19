@@ -1,6 +1,5 @@
 $line-height: 1.5
 $ratio: 1.25
-$sidebar-width: 320px
 $top-bar-height: 4em
 
 $break-xxs: 360px
@@ -17,7 +16,7 @@ $mobile-break: $break-s
 $sidebar-break: $break-xxl
 
 //1600px has to be the maximum for other pages
-$base-font-size: 1em * .95
+$base-font-size: 1.1em
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
 $step-up-3: $step-up-2 * $ratio
@@ -27,7 +26,7 @@ $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
 $card-border-radius: 6px
-$background-color: #EDF1F4
+$background-color: #F4F7FA //#EDF1F4
 $sidebar-background-color: rgb(249,252,255)
 $topbar-background-color: rgb(244,247,250)
 $card-background: rgb(255,255,255)
@@ -67,7 +66,7 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
   display: none
 
 body
-  opacity: 0
+  //opacity: 0
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   background: $background-color
@@ -94,9 +93,8 @@ body, html
   font-weight: normal
   overflow-x: hidden
   font-size: $base-font-size
-  @media only screen and (min-width: $sidebar-break) 
-    font-size: .95em
-  @media only screen and (min-width: $mobile-break) and (max-width: $sidebar-break)
+
+  @media only screen and (min-width: $mobile-break)
     font-size: .93em
   @media only screen and (min-width: $break-xs) and (max-width: $break-s)
     font-size: .90em
@@ -147,13 +145,15 @@ li
 
 h1
   font-size: $step-up-3
+  opacity: 1
 
 h2
   font-size: $step-up-2
+  opacity: .9
 
 h3
   font-size: $step-up-1
-
+  opacity: .8
 h4
   font-size: 1em
 
@@ -166,6 +166,7 @@ p
   -moz-hyphens: auto
   -webkit-hyphens: auto
   hyphens: auto
+  opacity: .8
 ul
   line-height: $line-height
 
@@ -173,170 +174,103 @@ ul
 // contains main and header objects
 .layout
   display: grid
-  grid-template-rows: $top-bar-height 1fr
+  grid-template-areas: " . top-bar top-bar ." " . welcome welcome . " " . projects-info . . " " . projects projects . " " . contact contact . "
+  grid-template-rows: $top-bar-height minmax(600px, auto) auto minmax(600px, auto) minmax(600px, auto)
+  grid-template-columns: auto 480px 480px auto
   width: 100%   
-  height: 100%
-  @media only screen and (min-width: $sidebar-break)
-    grid-template-columns: $sidebar-width 1fr
-  @media only screen and (max-width: $sidebar-break)
-    grid-template-columns: 1fr
+  height: 100% 
 
-// Container for the main content 
-// Contains one of the classes - articles or posts
-.main
-  width: 100%
-  height: 100%
-  overflow: visible
-  transition: opacity .3s ease-in-out, filter .3s ease-in-out
-  z-index: 1
-  grid-row-start: 3
-  grid-column-start: 2
-  @media only screen and (max-width: $sidebar-break)
-    grid-column-start: 1
+.welcome
+  grid-area: welcome
+  display: contents
+  & > div:nth-child(1)
+    grid-area: welcome-start
+  & > div:nth-child(2)
+    grid-area: welcome-end
+  & > div.section-bg
+    grid-column: 1 / 5
+    grid-row: 1 / 3
   
-.main--onblur
-  opacity: .5
-  filter: blur(2px)
+.contact
+  grid-area: contact
+  display: contents
+  & > div:nth-child(1)
+    grid-area: contact-start
+  & > div:nth-child(2)
+    grid-area: contact-end
+  & > div.section-bg
+    grid-column: 1 / 5
+    grid-row: 5 / 8
+
+.projects
+  grid-area: projects
+  display: contents
+  & > div:nth-child(1)
+    grid-area: projects-info-start
+  & > div:nth-child(2)
+    grid-area: projects
+
+.contact, .projects, .welcome 
+  & > div:nth-child(1), 
+  & > div:nth-child(2)
+    margin: 5rem 0
+
+.section-bg
+  background: #E7EDF3
+  z-index: -1
  
 // Container for the top information
 // fixed for mobile
-.tob-bar
-  display: grid
- 
-  grid-template-columns: 1rem 1rem 1rem 1fr 1rem
-  grid-template-rows: 1fr
+.tob-bar, .top-bar--white
+  grid-area: top-bar
+  display: flex
+  justify-content: space-between
+  margin-left: auto
+  margin-right: auto
   align-items: center 
   z-index: 4000
-  width: 100vw
-  //padding: 0 1em
-  position: fixed
+  width: 100%
   transition: background .15s ease-in-out
   height: $top-bar-height
-  background: $topbar-background-color
-  box-shadow: $shadow
-  top: 0
-  left: 0
-  @media only screen and (min-width: $sidebar-break)
-    grid-template-columns: $sidebar-width 3rem 1fr 1fr 3rem
-  @media only screen and (min-width: $mobile-break) and (max-width: $sidebar-break)
-    grid-template-columns: 2rem 2rem 1rem 1fr 2rem
-   
 
-.top-bar__logo
+.top-bar--nav
+  display: flex
+  justify-content:  space-between
+  font-size: $step-up-1
+  font-weight: normal
+  font-family: 'Colfax Medium'
+  a
+    padding: 0 10px
+    transition: color .15s ease-in-out
+
+
+.top-bar--logo
   font-size: $step-up-1
   text-transform: uppercase
-  grid-column: 1
-  padding: 0 3rem
   overflow: visible
   span
     font-family: 'Colfax Medium'
     font-weight: normal
-  @media only screen and (max-width: $sidebar-break)
-    display: none
 
-// The button for opening the sidebar
-.top-bar__button
-  grid-column: 2 / 2
-  font-size: $step-up-2
-  justify-self: center
-  display: block
-  color: #293C50
-  cursor: pointer
-  &:hover
-    color: #6F64F2
-    .bar
-      background-color: #6F64F2
-  @media only screen and (min-width: $sidebar-break)
-    display: none !important
+.top-bar
+  .top-bar--nav
+    a
+      color: #5f7288 
+    a:hover
+      color: black 
+  .top-bar--logo
+    color: #5f7288 
 
-.bar
-  transition: all .15s ease-in-out
-  width: 1rem
-  height: .2rem
-  margin: .1rem 0
-  background-color: #293C50
-  border-radius: 2px
-  -webkit-filter: drop-shadow(0 8px 32px rgba(50, 50, 50, 0.3))
-  filter: drop-shadow(0 1px 3px rgba(50, 50, 50, 0.3))
-  z-index: -1
 
-.top-bar__text--slash
-  color: #E7AAAE
-  padding: 0 .5rem
 
-.top-bar__text--subtitle
-  color: #5F7288
+.top-bar--white
+  .top-bar--nav
+    color: rgba(255, 255, 255, 0.8)
+    a:hover
+      color: white
+  .top-bar--logo
+     color: rgba(255, 255, 255, 0.8)
 
-.top-bar__text
-  text-transform: uppercase
-  color: #293C50
-  margin: 0
-  grid-column: 4 / 4
-  @media only screen and (min-width: $sidebar-break)
-    grid-column: 3 / 3
-
-.tob-bar__search
-  grid-column: 4
-  justify-self: end
-  @media only screen and (max-width: $sidebar-break)
-    display: none
-  input[type="text"]
-    background: #FFFFFF
-    box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
-    border-radius: 3px
-    border: none
-    height: 2rem
-    margin-left: 1em
-    width: 260px
-
-//The button for closing the sidebar    
-.header__close
-  cursor: pointer
-  margin-top: auto
-  @media only screen and (min-width: $sidebar-break)
-    display: none 
-
-// Container for the sidebar
-// 3 different versions, depending on the screen width
-// desktop, desktop/tablet , mobile 
-.header
-  vertical-align: middle
-  margin-top: $top-bar-height
-  z-index: 10
-  height: 100%
-  flex-grow: 1
-  display: flex
-  overflow-y: hidden
-  flex-shrink: 1
-  background-color: $sidebar-background-color
-  box-shadow: $shadow
-  position: fixed
-  align-items: flex-start 
-  flex-flow: wrap
-  flex-direction: column
-  left: $sidebar-width - (2 * $sidebar-width)
-  width: $sidebar-width
-  will-change: transform
-  transition-property: transform
-  transition-duration: .15s
-  transition-delay: .15s
-  transition-timing-function: ease-in-out
-  &>div:first-child
-    padding-top: 2rem
-  @media only screen and (min-width: $sidebar-break) 
-    padding-top: 0
-    height: 100vh
-    min-height: 100%
-    left: 0
-  @media only screen and (max-width: $sidebar-break) 
-    @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
-      background: rgba(255, 255, 255, .8)
-      backdrop-filter: blur(2em)
-      -webkit-backdrop-filter: blur(2em)
-      
-
-#header:focus
-  outline: 0px solid transparent
  
 .nav-item
   display: flex
@@ -389,49 +323,11 @@ ul
   &:hover
     color: #E8676A
 
-// class for hiding the sidebar
-.show-header
-  transition-property: transform
-  transition-duration: .15s
-  transition-timing-function: ease-in-out
-  transition-delay: 0s !important
-  @media only screen and (min-width: $sidebar-break)
-    -webkit-transform: translate3d(0,0,0)
-    transform: translate3d(0,0,0)
-  @media only screen and (max-width: $sidebar-break)
-    -webkit-transform: translate3d($sidebar-width,0,0)
-    transform: translate3d($sidebar-width,0,0)
-
 .header__info, .header__about
   padding: 1rem 3rem   
 .header__close, .header__sns, .header__nav
   width: 100%  
   padding: 1rem 0
-
-// Short text about the site
-.header__about--greeting
-  font-size: $step-up-1
-  font-family: 'Colfax Medium'
-  font-weight: normal
-  color: #293C50
-.header__about--text
-  color: #5F7288
-  max-height: 7.5em
-  transition-property: height
-  transition-duration: .15s
-  transition-timing-function: ease-in-out
-  // @media only screen and (max-height: 600px)
-  //   max-height: 0px
-  //   opacity: 0
-
-// top container for the information about the site / user
-// contains the avatar and the title objects
-.header__info
-  width: 100%
-  display: flex
-  flex-direction: row
-  align-items: center
-  justify-content: flex-start
 
 .info-title
   padding-left: 12px
@@ -456,7 +352,6 @@ ul
 
 
 .posts
-  padding-top: 3rem
   @media only screen and (max-width: $mobile-break) 
     padding-left: .5rem
     padding-right: .5rem
@@ -470,7 +365,8 @@ ul
 // container for the recents posts
 .posts
   display: grid
-  grid-gap: 20px
+  width: 100%
+  grid-gap: 40px
   grid-auto-flow: row dense
   margin: 0 auto
   margin-bottom: 4em
@@ -483,14 +379,6 @@ ul
   @for $i from 1 through 10
     &>div:nth-child(#{$i})
       animation-delay: .15s * $i
-
-
-.posts-container
-  margin: 0 auto
-  @media only screen and (min-width: $break-l) and (max-width: $break-xxxl)
-    max-width: 960px 
-  @media only screen and (min-width: $break-xxxl) 
-    max-width: 1440px 
 
 .post
   color: white
@@ -508,11 +396,16 @@ ul
 
 // Page 
 .article
-  // display: flex
-  // flex-direction: column
-  align-items: center
-  overflow: visible
-  background: #f9fcff
+  display: grid
+  grid-template-areas: " . top-bar top-bar ." " . header header . " " . content content . "
+  grid-template-rows: $top-bar-height minmax(400px, auto) auto
+  grid-template-columns: auto 480px 480px auto
+  width: 100%   
+  height: 100% 
+  &>.article__bg
+    grid-column: 1 / 5
+    grid-row: 1 / 3
+    z-index: -1
 
 .article-container
   max-width: 750px
@@ -524,10 +417,11 @@ ul
 .article__header, .article 
   animation-duration: .3s
   animation-fill-mode: both
-  animation-name: fade-in-up
+  animation-name: fade-in
   animation-timing-function: ease-in-out 
 
 .article__header
+  grid-area: header
   position: relative
   width: 100%
   z-index: 20
@@ -608,6 +502,7 @@ ul
   transition: color .15s ease-in-out
 
 .article__content
+  grid-area: content
   margin: 4rem 0
   padding: 1em
   p
@@ -882,7 +777,7 @@ ul
   animation-duration: .3s
   animation-fill-mode: both
   animation-delay: .1s
-  animation-name: fade-in-up
+  animation-name: fade-in
   animation-timing-function: ease-in-out
  
 @keyframes fade-in-up 

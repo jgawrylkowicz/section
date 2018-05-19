@@ -20,18 +20,26 @@ html(lang=config.language)
         link(rel='stylesheet', href=url)
     link(rel="icon", href=config.root + 'img/logo-128.png')
   body
-    div(class="layout")
-      include header.pug 
-      include topbar.pug
-      #main(class="main")
-        #content(class="main__content")
-          
+    #content
+      if is_home()
+        div(class="layout") 
+          include topbar.pug
+          include welcome.pug
+          div(class="projects")
+            if body
+              div!= body
+            else
+              block content   
+          include contact.pug
+      else 
+        div(class="article") 
+          include topbar.pug
           if body
             div!= body
           else
-            block content
-      //include footer.pug
-      if theme.scripts !== undefined && theme.scripts.length > 0
-        //- scripts list from config.yml
-        each url in theme.scripts
-          script(src=url)
+            block content   
+
+    if theme.scripts !== undefined && theme.scripts.length > 0
+      //- scripts list from config.yml
+      each url in theme.scripts
+        script(src=url)

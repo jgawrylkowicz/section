@@ -1,19 +1,11 @@
-- let subtitle = (page.title == null) ? "All Projects" : page.title
-- if (is_post()) 
+-let contrast = (is_home()) ? 'tob-bar' : 'top-bar--white'
+#tob-bar(class=contrast)
+  div(class="top-bar--logo")
+    !="Jakub" 
+    span
+      !="Gawrylkowicz" 
+  div(class="top-bar--nav")
+    each values, label in theme.menu
+      a(href=values.url data-pjax class="")!=label
+    
 
-#tob-bar(class="tob-bar")
-  div(class="top-bar__logo")
-    !=theme.header.title
-  #menu(class="top-bar__button")
-    div(class="bar")
-    div(class="bar")
-    div(class="bar")
-
-  h3#menu-text(class='top-bar__text')
-    !="Home"
-    span(class="top-bar__text--slash")="/"
-    span(class="top-bar__text--subtitle")
-      !=subtitle
-  //- div(class="tob-bar__search")
-  //-   i(class="fa fa-search fa-lg")&attributes({'aria-hidden': 'true'})
-  //-   input(type="text")

@@ -1,0 +1,18 @@
+div(class="contact")
+  div
+    h1!="Contact"
+    if (Array.isArray(theme.header.slogan))
+      - let array = theme.header.slogan
+      - first_sentence = theme.header.slogan[0]
+      - array = array.slice(1)
+      div(class="header__about--greeting")
+        !=first_sentence
+      p(class="header__about--text")
+        !=array.join('<br>')
+    else
+      h4
+        !=theme.header.slogan
+  div
+  div(class="section-bg")
+
+
