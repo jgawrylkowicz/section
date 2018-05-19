@@ -16,7 +16,7 @@ $mobile-break: $break-s
 $sidebar-break: $break-xxl
 
 //1600px has to be the maximum for other pages
-$base-font-size: 1.1em
+$base-font-size: 1em
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
 $step-up-3: $step-up-2 * $ratio
@@ -76,6 +76,7 @@ body
   margin: 0
   transition: opacity .3s ease-in-out
   transition-delay: .2s
+  color: #293c50;
   //width: 100%
   text-rendering: optimizeLegibility
 
@@ -94,8 +95,6 @@ body, html
   overflow-x: hidden
   font-size: $base-font-size
 
-  @media only screen and (min-width: $mobile-break)
-    font-size: .93em
   @media only screen and (min-width: $break-xs) and (max-width: $break-s)
     font-size: .90em
   @media only screen and (min-width: $break-xxs) and (max-width: $break-xs)
@@ -179,6 +178,12 @@ ul
   grid-template-columns: auto 480px 480px auto
   width: 100%   
   height: 100% 
+  @media only screen and (min-width: $break-m) and (max-width: $break-l)
+    grid-template-columns: 2em auto 2em
+    grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . "
+  @media only screen and (max-width: $break-m) 
+    grid-template-columns: 1em auto 1em
+    grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . "
 
 .welcome
   grid-area: welcome
@@ -236,36 +241,29 @@ ul
 .top-bar--nav
   display: flex
   justify-content:  space-between
-  font-size: $step-up-1
   font-weight: normal
   font-family: 'Colfax Medium'
   a
     padding: 0 10px
     transition: color .15s ease-in-out
+    color: #5f7288 
+  a:hover
+    color: black 
 
 
 .top-bar--logo
-  font-size: $step-up-1
   text-transform: uppercase
   overflow: visible
+  color: #5f7288 
   span
     font-family: 'Colfax Medium'
     font-weight: normal
 
-.top-bar
-  .top-bar--nav
-    a
-      color: #5f7288 
-    a:hover
-      color: black 
-  .top-bar--logo
-    color: #5f7288 
-
-
 
 .top-bar--white
   .top-bar--nav
-    color: rgba(255, 255, 255, 0.8)
+    a
+      color: rgba(255, 255, 255, 0.8)
     a:hover
       color: white
   .top-bar--logo
@@ -374,6 +372,7 @@ ul
   grid-auto-rows: minmax(auto, 1fr)
   grid-template-columns: 1fr
   justify-items: center
+
   @media only screen and (min-width: $break-l)
     grid-template-columns: repeat(auto-fit, $post-width)
   @for $i from 1 through 10
@@ -390,6 +389,7 @@ ul
   background: $card-background
   border-radius: $card-border-radius
   box-shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
+  cursor: pointer
   @media only screen and (min-width: $break-s)
     width: $post-width
     height: $post-height 
@@ -400,8 +400,16 @@ ul
   grid-template-areas: " . top-bar top-bar ." " . header header . " " . content content . "
   grid-template-rows: $top-bar-height minmax(400px, auto) auto
   grid-template-columns: auto 480px 480px auto
+  grid-row-gap: 50px
   width: 100%   
   height: 100% 
+  @media only screen and (min-width: $break-m) and (max-width: $break-l)
+    grid-template-columns: 2em auto 2em
+    grid-template-areas: " . top-bar ." " . header . " " . content . "
+  @media only screen and (max-width: $break-m) 
+    grid-template-columns: 1em auto 1em
+    grid-template-areas: " . top-bar ." " . header . " " . content . "
+
   &>.article__bg
     grid-column: 1 / 5
     grid-row: 1 / 3
@@ -422,14 +430,11 @@ ul
 
 .article__header
   grid-area: header
-  position: relative
-  width: 100%
-  z-index: 20
-  display: flex
-  flex-direction: column
-  justify-content: center
-  min-height: 350px
-  padding: 1em
+  //display: contents
+  &>div:nth-child(1)
+    grid-area: header-info
+  &>div:nth-child(2)
+    grid-area: header-links
 
 
 .article__header--title, .article__header--title--thumbnail
@@ -464,7 +469,7 @@ ul
 .article__header--links
   padding-top: .5em
   display: grid
-  grid-template: 1fr / repeat(auto-fill, 225px)
+  grid-template: 1fr / repeat(auto-fill, 260px)
   grid-gap: 1rem
 
 
@@ -690,6 +695,8 @@ ul
   transition-timing-function: ease-in-out
   &:hover
     color: #6F64F2
+  i 
+    color: #293C50
 
 .post__header--link
   display: none

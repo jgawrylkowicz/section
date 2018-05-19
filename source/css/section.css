@@ -32,6 +32,7 @@ body {
   margin: 0;
   transition: opacity .3s ease-in-out;
   transition-delay: .2s;
+  color: #293c50;
   text-rendering: optimizeLegibility;
 }
 
@@ -48,13 +49,7 @@ body, html {
   font-family: 'Colfax Regular', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-weight: normal;
   overflow-x: hidden;
-  font-size: 1.1em;
-}
-
-@media only screen and (min-width: 560px) {
-  body, html {
-    font-size: .93em;
-  }
+  font-size: 1em;
 }
 
 @media only screen and (min-width: 400px) and (max-width: 560px) {
@@ -168,6 +163,20 @@ ul {
   height: 100%;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 970px) {
+  .layout {
+    grid-template-columns: 2em auto 2em;
+    grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . ";
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1em auto 1em;
+    grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . ";
+  }
+}
+
 .welcome {
   grid-area: welcome;
   display: contents;
@@ -245,7 +254,6 @@ ul {
 .top-bar--nav {
   display: flex;
   justify-content: space-between;
-  font-size: 1.25em;
   font-weight: normal;
   font-family: 'Colfax Medium';
 }
@@ -253,12 +261,17 @@ ul {
 .top-bar--nav a {
   padding: 0 10px;
   transition: color .15s ease-in-out;
+  color: #5f7288;
+}
+
+.top-bar--nav a:hover {
+  color: black;
 }
 
 .top-bar--logo {
-  font-size: 1.25em;
   text-transform: uppercase;
   overflow: visible;
+  color: #5f7288;
 }
 
 .top-bar--logo span {
@@ -266,19 +279,7 @@ ul {
   font-weight: normal;
 }
 
-.top-bar .top-bar--nav a {
-  color: #5f7288;
-}
-
-.top-bar .top-bar--nav a:hover {
-  color: black;
-}
-
-.top-bar .top-bar--logo {
-  color: #5f7288;
-}
-
-.top-bar--white .top-bar--nav {
+.top-bar--white .top-bar--nav a {
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -463,6 +464,7 @@ ul {
   background: white;
   border-radius: 6px;
   box-shadow: 0 6px 24px 0 rgba(50, 50, 50, 0.2);
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 560px) {
@@ -477,8 +479,23 @@ ul {
   grid-template-areas: " . top-bar top-bar ." " . header header . " " . content content . ";
   grid-template-rows: 4em minmax(400px, auto) auto;
   grid-template-columns: auto 480px 480px auto;
+  grid-row-gap: 50px;
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 970px) {
+  .article {
+    grid-template-columns: 2em auto 2em;
+    grid-template-areas: " . top-bar ." " . header . " " . content . ";
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .article {
+    grid-template-columns: 1em auto 1em;
+    grid-template-areas: " . top-bar ." " . header . " " . content . ";
+  }
 }
 
 .article > .article__bg {
@@ -504,14 +521,14 @@ ul {
 
 .article__header {
   grid-area: header;
-  position: relative;
-  width: 100%;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 350px;
-  padding: 1em;
+}
+
+.article__header > div:nth-child(1) {
+  grid-area: header-info;
+}
+
+.article__header > div:nth-child(2) {
+  grid-area: header-links;
 }
 
 .article__header--title, .article__header--title--thumbnail {
@@ -554,7 +571,7 @@ ul {
 .article__header--links {
   padding-top: .5em;
   display: grid;
-  grid-template: 1fr/repeat(auto-fill, 225px);
+  grid-template: 1fr/repeat(auto-fill, 260px);
   grid-gap: 1rem;
 }
 
@@ -884,6 +901,10 @@ ul {
 
 .post__link:hover {
   color: #6F64F2;
+}
+
+.post__link i {
+  color: #293C50;
 }
 
 .post__header--link {

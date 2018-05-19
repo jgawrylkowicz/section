@@ -1,5 +1,6 @@
-div
-  h1!="Projects"
+div(class="fade-in")
+  h1
+    !="Projects" 
   p!="Here you can find some projects that I've been working on. Some of them were created in the course of my bachelor degree and some are personal."
 
 
@@ -34,12 +35,10 @@ div(class="posts")
                 div(class="post__thumbnail--background")  
                 div(class="post__thumbnail--background")
               
-            a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
+            //a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
                         
           div(class="post__footer")
             div(class='post__excerpt')
               !=post.description
-            a(class='post__link', data-pjax href=config.root + post.path)= 'Read more'
-
-        
-          
+            //a(class='post__link', data-pjax href=config.root + post.path)
+              i(class="fa fa-arrow-right fa-lg header-link__icon")&attributes({'aria-hidden': 'true'})
