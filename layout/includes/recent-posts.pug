@@ -3,7 +3,6 @@ div(class="fade-in")
     !="Projects" 
   p!="Here you can find some projects that I've been working on. Some of them were created in the course of my bachelor degree and some are personal."
 
-
 div(class="posts")
   if page.posts.length > 0
     each post in page.posts.sort('date', -1).limit(10).toArray()
