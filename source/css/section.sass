@@ -1,5 +1,5 @@
-$line-height: 1.5
-$ratio: 1.25
+$line-height: 1.6
+$ratio: 1.35
 $top-bar-height: 4em
 
 $break-xxs: 360px
@@ -10,13 +10,13 @@ $break-l: 970px
 $break-xl: 1200px
 $break-xxl: 1400px
 $break-xxxl: 1860px
-$break-uw: 2600px 
+$break-uw: 2500px 
 
 $mobile-break: $break-s  
 $sidebar-break: $break-xxl
 
-//1600px has to be the maximum for other pages
-$base-font-size: 1em
+//1500px has to be the maximum for other pages
+$base-font-size: 1.05em
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
 $step-up-3: $step-up-2 * $ratio
@@ -25,7 +25,7 @@ $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
-$card-border-radius: 6px
+$card-border-radius: 10px
 $background-color: #F4F7FA //#EDF1F4
 $sidebar-background-color: rgb(249,252,255)
 $topbar-background-color: rgb(244,247,250)
@@ -46,16 +46,24 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
   @return $value
 
 @font-face 
-  font-family: 'Colfax Medium'
+  font-family: 'IBM Plex Sans'
   font-style: normal
-  font-weight: normal
-  src: local('Colfax Medium'), url('/fonts/Colfax-Medium.woff') format('woff')
+  font-weight: 500
+  src: local("IBM Plex Sans Medium"), local("IBMPlexSans-Medium"), url("/fonts/IBMPlexSans-Medium.woff") format("woff")
 
 @font-face 
-  font-family: 'Colfax Regular'
+  font-family: 'IBM Plex Mono'
   font-style: normal
-  font-weight: normal
-  src: local('Colfax Regular'), url('/fonts/Colfax-Regular.woff') format('woff')
+  font-weight: 400
+  src: local("IBM Plex Mono"), local("IBMPlexMono"), url("/fonts/IBMPlexMono-Regular.woff") format("woff")
+
+
+@font-face 
+  font-family: 'IBM Plex Sans'
+  font-style: normal
+  font-weight: 400
+  src: local("IBM Plex Sans"), local("IBMPlexSans"), url("/fonts/IBMPlexSans-Regular.woff") format("woff")
+
 
 \::-moz-selection, ::selection
   background: rgba(107, 79, 189, 0.4)
@@ -74,7 +82,7 @@ body
   background-size: cover
   //height: 100vh
   margin: 0
-  transition: opacity .3s ease-in-out
+  transition: opacity .3s cubic-bezier(.17,.67,.16,.99)
   transition-delay: .2s
   color: #293c50;
   //width: 100%
@@ -90,8 +98,8 @@ html
   
 
 body, html
-  font-family: 'Colfax Regular', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
-  font-weight: normal
+  font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
+  font-weight: 400
   overflow-x: hidden
   font-size: $base-font-size
 
@@ -103,14 +111,8 @@ body, html
     font-size: .84em
 
 code
-  border: none
-  border-bottom-right-radius: 3px
-  border-radius: 0
-  border-top-right-radius: 3px
-  display: block
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
-  font-size: 13px
-  line-height: 19px
+
+  font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
   overflow: auto
   padding: 0
 
@@ -123,16 +125,18 @@ a
   -webkit-box-sizing: border-box
   box-sizing: border-box
 
+
+
 h1, h2, h3, h4, h5, h6, ul
   padding-top: 0
   margin-top: 0
 
 h1, h2, h3, h4, h5, h6
-  font-family: 'Colfax Medium'
-  font-weight: normal
+  font-weight: 500
 
 h1, h2, h3
-  margin-bottom: $step-up-1 .5rem
+  //font-family: 'IBM Plex Sans'
+  margin-bottom: $step-up-1
   line-height: 1.2
   margin-left: -2px
 
@@ -174,8 +178,8 @@ ul
 // contains main and header objects
 .layout
   display: grid
-  grid-template-areas: " . top-bar top-bar ." " . welcome welcome . " " . projects-info . . " " . projects projects . " " . contact contact . "
-  grid-template-rows: $top-bar-height minmax(600px, auto) auto minmax(600px, auto) minmax(600px, auto)
+  grid-template-areas: " . top-bar top-bar ." " . welcome welcome-iso . " " . projects-info . . " " . projects projects . " " . contact contact . " " . contact-sns contact-sns . " " . bottom-bar bottom-bar ." 
+  grid-template-rows: $top-bar-height minmax(700px, auto) auto minmax(700px, auto) auto auto 
   grid-template-columns: auto 480px 480px auto
   width: 100%   
   height: 100% 
@@ -184,10 +188,10 @@ ul
   //scroll-snap-points-y: repeat(100%)
   @media only screen and (min-width: $break-m) and (max-width: $break-l)
     grid-template-columns: 2em auto 2em
-    grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . "
+    grid-template-areas: " . top-bar ." " . welcome . " " . welcome . "  " . projects-info . " " . projects . " " . contact . " " . contact-sns . " " . bottom-bar ." 
   @media only screen and (max-width: $break-m) 
     grid-template-columns: 1em auto 1em
-    grid-template-areas: " . top-bar ." " . welcome . " " . projects-info . " " . projects . " " . contact . "
+    grid-template-areas: " . top-bar ." " . welcome . " " . welcome . "  " . projects-info . " " . projects . " " . contact . " " . contact-sns . " " . bottom-bar ." 
 
 .welcome
   grid-area: welcome
@@ -195,8 +199,11 @@ ul
   & > div:nth-child(1)
     grid-area: welcome-start
   & > div:nth-child(2)
-    grid-area: welcome-end
+    grid-area: welcome-iso-start
+    //display: flex
+    //align-content: flex-start
   & > div.section-bg
+    background: linear-gradient(to top, #d2e6f3 26.89%, rgba(249, 245, 253, 0.5)) !important
     grid-column: 1 / 5
     grid-row: 1 / 3
   
@@ -207,7 +214,10 @@ ul
     grid-area: contact-start
   & > div:nth-child(2)
     grid-area: contact-end
+  & > div:nth-child(3)
+    grid-area: contact-sns-start / contact-sns-start / contact-sns-end / contact-sns-end
   & > div.section-bg
+    //background: linear-gradient(to top,#0B1924, #1f364d) !important
     grid-column: 1 / 5
     grid-row: 5 / 8
 
@@ -219,7 +229,7 @@ ul
   & > div:nth-child(2)
     grid-area: projects
 
-.contact, .projects, .welcome 
+.contact, .projects, .welcome , .contact-sns 
   //& > div:nth-child(1)
     //scroll-snap-align: start
   & > div:nth-child(1), 
@@ -229,10 +239,49 @@ ul
 .section-bg
   background: #E7EDF3
   z-index: -1
- 
+
+.sns
+  display: flex
+  justify-content: space-around
+  margin: 5rem 0
+
+.sns__link
+  display: flex
+  opacity: .7
+  flex-direction: column
+  align-items: center
+  max-width: 10em
+  margin: 1rem
+  text-align: center
+  transition: all .3s cubic-bezier(.17,.67,.16,.99)
+
+  &>i
+    font-size: 4rem
+    padding-bottom: 1rem
+
+.sns__link:hover
+  transform: scale(1.2)
+  opacity: 1
+
+.bottom-bar
+  grid-area: bottom-bar-start / bottom-bar-start / bottom-bar-end / bottom-bar-end 
+  & > div:nth-child(1)
+    font-size: $step-down-1
+    p
+      text-align: center
+
+.bottom-bar--dark
+  grid-area: bottom-bar-start / bottom-bar-start / bottom-bar-end / bottom-bar-end 
+  & > div:nth-child(1)
+    font-size: $step-down-1
+    p
+      text-align: center
+      color: white
+
+
 // Container for the top information
 // fixed for mobile
-.tob-bar, .top-bar--white
+.top-bar, .top-bar--white, .top-bar--scroll
   grid-area: top-bar
   display: flex
   justify-content: space-between
@@ -241,17 +290,50 @@ ul
   align-items: center 
   z-index: 4000
   width: 100%
-  transition: background .15s ease-in-out
+  transition: background .15s cubic-bezier(.17,.67,.16,.99)
   height: $top-bar-height
+
+#top-bar--container
+  
+  z-index: 3000
+  opacity: 1
+  position: fixed
+  display: grid
+  transition: opacity .15s cubic-bezier(.17,.67,.16,.99)
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  background-color: rgba(0,0,0, .6)
+  grid-template-columns: auto 960px auto
+  grid-template-rows: auto
+  grid-template-areas: " . top-bar-content  . "
+  @media only screen and (min-width: $break-m) and (max-width: $break-l)
+    grid-template-columns: 2em auto 2em
+  @media only screen and (max-width: $break-m) 
+    grid-template-columns: 1em auto 1em 
+
+  & > div:nth-child(1)
+    grid-area: top-bar-content
+  & > *
+    color: white
+    
+.top-bar--scroll
+  .top-bar--logo
+    color: rgba(255,255,255,.8)
+  .top-bar--nav
+    a
+      color: rgba(255,255,255,.8)
+    a:hover
+      color: white 
 
 .top-bar--nav
   display: flex
   justify-content:  space-between
-  font-weight: normal
-  font-family: 'Colfax Medium'
+  font-weight: 500
   a
     padding: 0 10px
-    transition: color .15s ease-in-out
+    transition: color .15s cubic-bezier(.17,.67,.16,.99)
     color: #5f7288 
   a:hover
     color: black 
@@ -262,8 +344,8 @@ ul
   overflow: visible
   color: #5f7288 
   span
-    font-family: 'Colfax Medium'
-    font-weight: normal
+    font-weight: 500
+
 
 
 .top-bar--white
@@ -275,63 +357,6 @@ ul
   .top-bar--logo
      color: rgba(255, 255, 255, 0.8)
 
- 
-.nav-item
-  display: flex
-  padding: 1rem 33px   
-  align-items: center
-  transition-property: color, border-left, background
-  transition-duration: .15s
-  transition-timing-function: ease-in-out
-  color: #5F7288
-  border-left: 5px solid transparent
-  &:hover
-    color: #6F64F2
-    background: rgba(0,0,0,.05)
-    border-left: 5px solid #6F64F2
-    .nav_item_icon
-      color: #ABA8F2
-  &:active
-    border-left: 5px solid #E8676A
-    background: #FFE6E8
-
-.nav-item__icon
-  width: 1rem
-  color: #AAB9C5
-  transition: color .15s ease-in-out
-  margin-right: 1rem
-
-.nav-item__info
-  line-height: .5
-  font-size: .9em
-  color: #AAB9C5
-  text-transform: none
-  font-family: 'Colfax Regular'
-  position: absolute
-
-
-.nav-item__label
-  text-transform: uppercase
-  font-family: 'Colfax Medium'
-  font-weight: normal
-
-.nav-item--close
-  display: flex
-  padding: 1rem 2rem
-  align-items: center
-  transition-property: color, border-left, background
-  transition-duration: .15s
-  transition-timing-function: ease-in-out
-  color: #E7AAAE 
-  margin-bottom: $top-bar-height
-  &:hover
-    color: #E8676A
-
-.header__info, .header__about
-  padding: 1rem 3rem   
-.header__close, .header__sns, .header__nav
-  width: 100%  
-  padding: 1rem 0
 
 .info-title
   padding-left: 12px
@@ -360,12 +385,6 @@ ul
     padding-left: .5rem
     padding-right: .5rem
 
-// container for full pages and posts
-// .full-post
-//   display: flex
-//   justify-content: center
-  
-
 // container for the recents posts
 .posts
   display: grid
@@ -386,16 +405,18 @@ ul
       animation-delay: .15s * $i
 
 .post
-  color: white
+  //color: white
   width: 100%
   height: 100vw
+  display: inline
   position: relative
-  transition: all .3s ease-in-out
+  transition: all .3s cubic-bezier(.17,.67,.16,.99)
   overflow: hidden
   background: $card-background
   border-radius: $card-border-radius
   box-shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
   cursor: pointer
+  will-change: transform
   @media only screen and (min-width: $break-s)
     width: $post-width
     height: $post-height 
@@ -403,7 +424,7 @@ ul
 // Page 
 .article
   display: grid
-  grid-template-areas: " . top-bar top-bar ." " . header header . " " . content content . "
+  grid-template-areas: " . top-bar top-bar ." " . header-img header-img . " " . header header . " " . content content . " " . bottom-bar bottom-bar ." 
   grid-template-rows: $top-bar-height minmax(400px, auto) auto
   grid-template-columns: auto 480px 480px auto
   grid-row-gap: 5rem
@@ -411,15 +432,32 @@ ul
   height: 100% 
   @media only screen and (min-width: $break-m) and (max-width: $break-l)
     grid-template-columns: 2em auto 2em
-    grid-template-areas: " . top-bar ." " . header . " " . content . "
+    grid-template-areas: " . top-bar ." " . header-img . " " . header . " " . content . " " . bottom-bar ." 
   @media only screen and (max-width: $break-m) 
     grid-template-columns: 1em auto 1em
-    grid-template-areas: " . top-bar ." " . header . " " . content . "
+    grid-template-areas: " . top-bar ." " . header-img . " " . header . " " . content . " " . bottom-bar ." 
 
-  &>.article__bg
-    grid-column: 1 / 5
-    grid-row: 1 / 3
-    z-index: -1
+.article__bg
+  grid-column: 1 / 5
+  grid-row: 1 / 3
+  z-index: -1
+  background: #E7EDF3
+  //background: linear-gradient(to top, #E7EDF3 26.89%, #E7EDF3 ) !important
+
+.article__header-img
+  max-width: 900px
+  height: auto
+  margin-bottom: 4em
+  webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+  filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+  grid-area: header-img
+  border-radius: 4px
+
+.article__bar
+  grid-column: 1 / 5
+  grid-row: 1 / 3
+  z-index: 10
+  height: 6px
 
 .article-container
   max-width: 700px
@@ -428,99 +466,83 @@ ul
   display: flex
   flex-direction: column
 
-.article__header, .article 
+.article 
   animation-duration: .3s
   animation-fill-mode: both
   animation-name: fade-in
-  animation-timing-function: ease-in-out 
+  animation-timing-function: cubic-bezier(.17,.67,.16,.99) 
 
 .article__header
+  border-bottom: 1px solid rgba(0,0,0,.1)
   grid-area: header
   max-width: 700px
   margin: 0 auto
-  //display: contents
   &>div:nth-child(1)
     grid-area: header-info
   &>div:nth-child(2)
     grid-area: header-th
-    margin-bottom: auto
-    margin-top: auto
-    margin-left: auto
    
-
-
-.article__header--title, .article__header--title--thumbnail
+.article__header--title
   position: relative
-  display: flex
-  align-items: baseline
-  flex-direction: row
-  justify-content: space-between
   z-index: 20
-  h1
-    font-size: $step-up-4
-    margin-bottom: 0
+  padding-top: 1.5rem
+  font-size: $step-up-4
+  margin-bottom: 0em
+  text-align: left
+
 
 .article__header--description
-  color: white
-  padding: 1rem 0
+  padding-bottom: 2em
+  padding-top: 1em
+  opacity: .6
+  //font-style: italic
+  font-size: 1.2em
+  
+.article__header--subtitle
+  display: flex
+  flex-direction: row
+  justify-content: center
 
 .article__header--title
   color: #293C50
-  
-.article__header--title--thumbnail
-  color: white
 
-.article__header--date, .post__header--date
-  font-size: 1em
-  margin-bottom: 0
-  color: rgba(255,255,255, 0.7)
 
-.article__header--tags
-  padding-bottom: .5em
+.article__header--tags, .article__header--date
+  font-size: .8em
+  opacity: .7
+  font-weight: 600
+
+.article__header--date
+  margin: 0
+  padding: 0
+  margin-top: 1.5em
 
 .article__header--links
-  padding-top: .5em
-  display: grid
-  grid-template: 1fr / repeat(2, auto)
-  grid-gap: 1rem
-
+  display: flex
+  justify-content: center
 
 .header-link
-  display: flex
-  flex-direction: column
-  color: rgba(255,255,255, .7)
-  border: 1px solid white
-  border-radius: 6px
-  padding: 1rem
-  transition: background .15s ease-in-out
-  &:hover
-    background: rgba(255,255,255,.05a)
-    color: white !important
-    .header-link__icon
-      color: white !important
-    .header-link__label
-      color: white !important
-    
-.header-link__description
-  margin-left: 2rem
-
-.header-link__icon
-  width: 1rem
-  color: rgba(255,255,255,.7)
-  margin-right: 1rem
-
-.header-link__label
-  text-transform: uppercase
-  color: rgba(255,255,255, .7)
+  color: rgba(255,255,255,.9)
+  background-color: #3CC8E7
+  padding: .75em 2em
   font-size: $base-font-size
-  font-family: "Colfax Medium"
-
-.header-link__description, .header-link__label, .header-link__icon
-  transition: color .15s ease-in-out
+  font-weight: 600
+  border-radius: 2em
+  text-align: center
+  min-width: 10em
+  margin: 0 1em
+  -webkit-filter: drop-shadow(0 .5em 1em  #3CC8E7)
+  filter: drop-shadow(0 .5em 1em #3CC8E7)
+  transition: background-color .5s cubic-bezier(.17,.67,.16,.99), color .3s cubic-bezier(.17,.67,.16,.99), transform .3s cubic-bezier(.17,.67,.16,.99) 
+  &:hover
+    //background: rgba(255,255,255,.05)
+    transform: translateY(-4px) scale(1.01)
+    
 
 .article__content
   grid-area: content
   margin: 0
+  z-index: 1000
   padding: 1em
   p
     margin: 2rem 0
@@ -528,7 +550,6 @@ ul
   h2
     color: #293C50 
     margin: 0
-    text-transform: uppercase
   img
     width: 100%
     -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
@@ -537,6 +558,8 @@ ul
 
 .post:hover
   box-shadow: 0 6px 48px 0 rgba(50,50,50,0.4)
+  transform: scale(1.03)
+
 
 .post:hover .post__thumbnails
   &>img
@@ -560,6 +583,12 @@ ul
         transform: scale(1 * $factor_size) translateY(-6% * $exp * $factor_translate) 
         transition-delay: .03s * $exp
         opacity: pow(.7, $exp)
+
+.post-link
+  position: absolute
+  height: 100%
+  width: 100%
+  z-index: 100
 
 
 .post-container
@@ -597,7 +626,10 @@ ul
 .post__footer
   padding: $post-padding
   padding-top: 1rem
-  z-index: 10
+  z-index: 2
+  border-bottom-right-radius: $card-border-radius
+  border-bottom-left-radius: $card-border-radius
+
 
 .post__thumbnails
   align-self: center
@@ -633,9 +665,9 @@ ul
         opacity: pow(.6, $exp)
       
   &>img
-    transition: all .3s ease-in-out
+    transition: all .3s cubic-bezier(.17,.67,.16,.99)
   &>div
-    transition: all .3s ease-in-out
+    transition: all .3s cubic-bezier(.17,.67,.16,.99)
  
 
 .post__thumbnail
@@ -683,7 +715,7 @@ ul
   a:hover
     color: black
  
-.post__header--tags--thumbnail, .article__header--tags--thumbnail
+.post__header--tags--thumbnail
   color: rgba(255,255,255,.7)
   a:hover
     color: white
@@ -713,12 +745,11 @@ ul
   //border: 1px solid rgba(0,0,0,.3)
   //border-radius: 3px 
   text-transform: uppercase
-  font-family: 'Colfax Medium'
-  font-weight: normal
+  font-weight: 500
   margin-top: auto
   transition-property: color
   transition-duration: .15s
-  transition-timing-function: ease-in-out
+  transition-timing-function: cubic-bezier(.17,.67,.16,.99)
   &:hover
     color: #6F64F2
   i 
@@ -727,8 +758,7 @@ ul
 .post__header--link
   display: none
   text-transform: uppercase
-  font-family: 'Colfax Medium'
-  font-weight: normal
+  font-weight: 500
   @media only screen and (max-width: $mobile-break)
     display: inline
     position: absolute
@@ -742,8 +772,8 @@ ul
 
 .tags-list-item
   a
-    -webkit-transition: color .15s ease-in-out
-    transition: color .15s ease-in-out
+    -webkit-transition: color .15s cubic-bezier(.17,.67,.16,.99)
+    transition: color .15s cubic-bezier(.17,.67,.16,.99)
     text-decoration: none
     text-transform: uppercase
   -webkit-appearance: none
@@ -756,62 +786,13 @@ ul
   position: relative
   z-index: 4
   
-.button, .button--alt, .button--thumbnail, .button--alt--thumbnail
-  border-radius: 3px
-  display: inline-block
-  font-size: 1em
-  padding: .7em 1.4em
-  margin-right: .5em
-  margin-top: .5em
-  position: relative
-  text-align: center
-  text-decoration: none
-  text-transform: uppercase
-  z-index: 4
-  transition-property: transform, color, background
-  transition-duration: .15s
-  transition-timing-function: ease-in-out
-  &:hover
-    box-shadow: 0 3px 12px rgba(50,50,50,0.2)
-  @media screen and (max-width: $break-m)
-    padding: .5em 1em
-
-.button
-  background: #ABA8F2
-  color: rgba(255,255,255,.9)
-  &:hover
-    background: #6F64F2
-    color: white
-
-.button--thumbnail
-  background: rgba(255,255,255,.9)
-  color: #ABA8F2
-  &:hover
-    background: white
-    color: #6F64F2
-    
-.button--alt
-  background: #E7AAAE
-  color: rgba(255,255,255,.7)
-  &:hover
-    background: #E8676A
-    color: white
-  
-.button--alt--thumbnail
-  color: #ABA8F2
-  background: rgba(255,255,255,.8)
-  &:hover
-    color: #6F64F2
-    background: white
-
-
 // Animations for the content of the main object
 .fade-in
   animation-duration: .3s
   animation-fill-mode: both
   animation-delay: .1s
   animation-name: fade-in
-  animation-timing-function: ease-in-out
+  animation-timing-function: cubic-bezier(.17,.67,.16,.99)
  
 @keyframes fade-in-up 
   from 
@@ -842,14 +823,43 @@ ul
   
 .pace-inactive  .pace-progress
   opacity: 0
-  transition: opacity .5s ease-in-out 
+  transition: opacity .5s cubic-bezier(.17,.67,.16,.99) 
+
+.button--primary
+  color: rgba(255,255,255,.9)
+  background-color: #3CC8E7
+  padding: .75em 2em
+  font-size: $base-font-size
+  font-weight: 600
+  border-radius: 2em
+  margin: 4em 0 
+  -webkit-filter: drop-shadow(0 .5em 1em  #3CC8E7)
+  filter: drop-shadow(0 .5em 1em #3CC8E7)
+  transition: background-color 1s cubic-bezier(.17,.67,.16,.99), color .3s cubic-bezier(.17,.67,.16,.99) 
+
+.button--primary:hover
+  transform: translateY(4px)
+  background-color: saturate(#3CC8E7, 10)
+  //background-color: #31cff2
+  color: white
+
+
+.button-container
+  padding: 4em 0
 
 .pace .pace-progress 
-  background: #6F64F2
+  background: #3CC8E7
   position: fixed
   z-index: 8000
   top: 0
   right: 100%
   width: 100%
-  height: 2px
+  height: 6px
 
+.iso
+  //transform: scale(1.4)
+  margin-left: -6em
+  width: 140%
+  height: auto
+  @media only screen and (max-width: $break-l)
+    display: none

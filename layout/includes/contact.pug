@@ -1,18 +1,15 @@
 div(class="contact")
-  div(class="fade-in")
+  div(data-aos="fade-down" )
     h1!="Contact"
-    if (Array.isArray(theme.header.slogan))
-      - let array = theme.header.slogan
-      - first_sentence = theme.header.slogan[0]
-      - array = array.slice(1)
-      div(class="header__about--greeting")
-        !=first_sentence
-      p(class="header__about--text")
-        !=array.join('<br>')
-    else
-      h4
-        !=theme.header.slogan
+    p!="Here you can find some ways of contacting me as well as links to my work. The repositories withe the showed projects are public and are free to use. If you have any questions regarding my work, let me know."
   div
+  
+  div(class="sns" data-aos="fade-down")
+    each values, label in theme.sns
+      if values.url 
+        a(href=values.url class="sns__link")
+          i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'}) 
+          h4!=values.info
   div(class="section-bg")
 
 

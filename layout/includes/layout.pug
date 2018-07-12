@@ -31,6 +31,7 @@ html(lang=config.language)
             else
               block content   
           include contact.pug
+          include bottombar.pug
       else 
         div(class="article") 
           include topbar.pug
@@ -38,6 +39,7 @@ html(lang=config.language)
             div!= body
           else
             block content   
+          include bottombar.pug
 
     if theme.scripts !== undefined && theme.scripts.length > 0
       //- scripts list from config.yml
