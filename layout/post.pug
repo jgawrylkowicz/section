@@ -5,35 +5,32 @@ block content
 
   div(class="article__bg")
   
-  img(class="article__header-img", src=page.thumbnail.url_hq width="100%" height="100%")
+  #article__img
+    a(class="progressive replace" 
+    alt="image" 
+    data-srcset= page.thumbnail.url_hq + " 800w," + page.thumbnail.url_hq + " 1200w"
+    data-sizes="100vw"
+    href=page.thumbnail.url_hq)
+      img#article_preview(class="preview" src=page.thumbnail.url_preview width="100%" height="100%")
   
   div(class="article__bar", style={background: background} )
 
-  div(class="article__header" data-aos="fade-down")
+  div(class="article__header")
+    div(class="article-container")
 
+      if page.tags.length > 0 
+      div(class="article__header--tags" style={color: background})
+        !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
-    if page.tags.length > 0 
-    div(class="article__header--tags" style={color: background})
-      !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
-
-    div(class="article__header--date")
-      !=date(page.date, date_format)
-        
-    h1(class="article__header--title")= page.title
-    
-    p(class='article__header--description')=page.description
-
-    //div(class="article__header--links")
-      if page.github
-        a(class="header-link", href=page.github)
-          !='Github'
-      if page.heroku
-        a(class="header-link", href=page.heroku)
-          !='Heroku'
-
+      div(class="article__header--date")
+        !=date(page.date, date_format)
+     
+      h2(class="article__header--title")= page.title
+      
+      p(class='article__header--description')=page.description
 
   div(class="article__content")
-    div(class="article-container" data-aos="fade-down" data-aos-delay="200")
+    div(class="article-container")
       !=page.content
               
 

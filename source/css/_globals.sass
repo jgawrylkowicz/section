@@ -1,0 +1,77 @@
+$line-height: 1.6
+$ratio: 1.5
+$top-bar-height: 4em
+
+$break-xxs: 360px
+$break-xs: 400px
+$break-s: 560px
+$break-m: 768px
+$break-l: 970px
+$break-xl: 1200px
+$break-xxl: 1400px
+$break-xxxl: 1860px
+$break-uw: 2500px 
+
+$mobile-break: $break-s  
+$sidebar-break: $break-xxl
+
+//1500px has to be the maximum for other pages
+$base-font-size: 1em
+$step-up-1: 1em * $ratio
+$step-up-2: $step-up-1 * $ratio
+$step-up-3: $step-up-2 * $ratio
+$step-up-4: $step-up-3 * $ratio
+$step-down-1: 1em / $ratio
+$step-down-2: $step-down-1 / $ratio
+
+$max-card-width: 800px
+$card-border-radius: 10px
+$background-color: #F4F7FA //#EDF1F4
+$sidebar-background-color: rgb(249,252,255)
+$topbar-background-color: rgb(244,247,250)
+$card-background: rgb(255,255,255)
+$dark-mode-card: rgba(44,50,58,1)
+
+$post-width: 460px
+$post-height: 520px
+$post-padding: 2em
+
+$shadow-color: rgba(0,0,0,0.4)
+$shadow-blur: 0 12px 48px
+
+$easing-function: cubic-bezier(.17,.67,.16,.99)
+
+@function pow($number, $exponent) 
+  $value: 1
+  @if $exponent > 0 
+    @for $i from 1 through $exponent 
+      $value:  $value * $number
+  @return $value
+
+@font-face 
+  font-family: 'IBM Plex Sans'
+  font-style: normal
+  font-weight: 500
+  src: local("IBM Plex Sans Medium"), local("IBMPlexSans-Medium"), url("/fonts/IBMPlexSans-Medium.woff") format("woff")
+
+@font-face 
+  font-family: 'IBM Plex Mono'
+  font-style: normal
+  font-weight: 400
+  src: local("IBM Plex Mono"), local("IBMPlexMono"), url("/fonts/IBMPlexMono-Regular.woff") format("woff")
+
+
+@font-face 
+  font-family: 'IBM Plex Sans'
+  font-style: normal
+  font-weight: 400
+  src: local("IBM Plex Sans"), local("IBMPlexSans"), url("/fonts/IBMPlexSans-Regular.woff") format("woff")
+
+
+\::-moz-selection, ::selection
+  background: rgba(107, 79, 189, 0.4)
+  text-shadow: none
+
+::-webkit-scrollbar
+  width: 0
+  display: none

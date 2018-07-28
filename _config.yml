@@ -30,9 +30,6 @@ menu:
   Projects:
     url: /
     icon: fa-home
-  Contact:
-    url: /
-    icon: fa-home
 
 thumbnail:
   default: 'white'
@@ -76,13 +73,12 @@ favicon: /img/logo-128.png
 # stylesheets loaded in the <head>
 stylesheets:
 - /css/section.css
-- /css/fontawesome.min.css
-- /css/aos.css
 
 # scripts loaded in the end of the body
 scripts:
-- /js/pjax.js
+- /js/anime.min.js
+- /js/barba.min.js
 - /js/pace.min.js
-- /js/aos.js
-- /js/section.js
+- /js/barba-config.min.js
+- /js/progressive-image.min.js
 

@@ -1,22 +1,11 @@
 //-let contrast = (is_home()) ? 'tob-bar' : 'top-bar--white'
 #top-bar(class='top-bar')
   div(class="top-bar--logo")
-    !="Jakub" 
+    !="J" 
     span
-      !="Gawrylkowicz" 
+      !="G" 
   div(class="top-bar--nav")
     each values, label in theme.menu
       a(href=values.url data-pjax class="")!=label
 
-//#tob-bar--container
-  div(class="tob-bar--scroll")
-    div(class="top-bar--logo")
-      !="Jakub" 
-      span
-        !="Gawrylkowicz" 
-    div(class="top-bar--nav")
-      each values, label in theme.menu
-        a(href=values.url data-pjax class="")!=label
-    
-    
 

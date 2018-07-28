@@ -1,0 +1,280 @@
+
+.posts
+  @media only screen and (max-width: $mobile-break) 
+    padding-left: .5rem
+    padding-right: .5rem
+
+// container for the recents posts
+.posts
+  display: grid
+  width: 100%
+  grid-gap: 40px
+  grid-auto-flow: row dense
+  margin: 0 auto
+  margin-bottom: 4em
+  align-items: center
+  grid-auto-rows: minmax(auto, 1fr)
+  grid-template-columns: 1fr
+  justify-items: center
+
+  @media only screen and (min-width: $break-l)
+    grid-template-columns: repeat(auto-fit, $post-width)
+  @for $i from 1 through 10
+    &>div:nth-child(#{$i})
+      animation-delay: .15s * $i
+
+.post
+  width: 100%
+  height: 100vw
+  position: relative
+  display: inline-block
+  transition: all .3s $easing-function
+  overflow: hidden
+  background: $card-background
+  border-radius: $card-border-radius
+  box-shadow: 0 6px 24px rgba(50,50,50,0.2)
+  cursor: pointer
+  will-change: transform, box-shadow
+  @media only screen and (min-width: $break-s)
+    width: $post-width
+    height: $post-height 
+
+.post::after 
+  box-shadow: 0 12px 48px rgba(50,50,50,.2)
+  opacity: 0
+  position: absolute
+  z-index: -1
+  width: 100%
+  height: 100%
+  opacity: 0
+  border-radius: $card-border-radius
+  transition: opacity .3s $easing-function
+
+.post:hover::after 
+  opacity: 1
+
+.post:hover
+  transform: scale(1.03)
+  
+.post:hover .post__thumbnails
+  &>img
+    transform: scale(1.02) 
+   
+  &.landscape
+    @for $i from 2 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $exp: ($i - 1) 
+        $factor_size: pow(.93, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-8% * $exp * $factor_translate) 
+        opacity: pow(.7, $exp)
+
+  &.portrait 
+    @for $i from 2 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $exp: ($i - 1) 
+        $factor_size: pow(.93, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-6% * $exp * $factor_translate) 
+        transition-delay: .03s * $exp
+        opacity: pow(.7, $exp)
+
+.post-link
+  position: absolute
+  height: 100%
+  width: 100%
+  z-index: 100
+
+
+.post-container
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: 1fr 8em
+  height: 100%
+  width: 100%
+
+.post__header, .post__header--thumbnail
+  display: flex
+  flex-direction: column
+
+.post__header
+  color: #293C50 
+
+.post__header--thumbnail
+  color: white
+
+.post__footer
+  display: flex
+  flex-direction: column
+  background: $sidebar-background-color
+  height: 100%
+
+
+.post__header--thumbnail, .post__excerpt--thumbnail,
+  padding: $post-padding
+  padding-bottom: 0
+
+.post__footer
+  padding: $post-padding
+  padding-top: 1rem
+  z-index: 2
+  border-bottom-right-radius: $card-border-radius
+  border-bottom-left-radius: $card-border-radius
+
+
+.post__thumbnails
+  align-self: center
+  top: 25%
+  position: absolute
+  transform-style: preserve-3d
+  transform: translate3d(0,0,0)
+
+  &.landscape
+    width: $post-width * .85
+    height: $post-width * 0.5652 * .85
+  
+    @for $i from 2 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $exp: ($i - 1) 
+        $factor_size: pow(.95, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-5% * $exp  * $factor_translate) 
+        transition-delay: .03s * $exp
+        opacity: pow(.6, $exp)
+        border-radius: 3px
+
+  &.portrait
+    width: $post-width  * 0.5652  * 1.2 
+    height: $post-width * 1.2
+    
+
+    @for $i from 2 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $exp: ($i - 1) 
+        $factor_size: pow(.95, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-3.5% * $exp * $factor_translate) 
+        transition-delay: .03s * $exp
+        opacity: pow(.6, $exp)
+        border-radius: 3px
+      
+  &>img
+    transition: all .3s $easing-function
+  &>div
+    transition: all .3s $easing-function
+ 
+
+.post__thumbnail
+  width: 100%
+  height: 100%
+  border-radius: 3px
+  position: absolute
+  z-index: 10
+  box-shadow: 0 12px 48px rgba(50,50,50,0.4)
+  will-change: transform
+
+.post__thumbnail--background
+  background-color: rgba(255,255,255,.6)
+  width: 100%
+  height: 100%
+  position: absolute
+  left: 0
+  right: 0
+  margin-left: auto
+  margin-right: auto
+
+.post__header--title
+  position: relative
+  display: flex
+  align-items: baseline
+  flex-direction: row
+  justify-content: space-between
+  z-index: 20
+  h2
+    margin-bottom: 0.2rem
+
+.post__header--date
+  color: rgba(255,255,255,.7)
+
+.post__header--tags, .post__header--tags--thumbnail
+  display: inline-flex
+  height: 1.25em
+  overflow: hidden
+  font-size: $step-down-1
+
+
+.post__header--tags, .article__header--tags
+  color: #5F7288
+  a:hover
+    color: black
+ 
+.post__header--tags--thumbnail
+  color: rgba(255,255,255,.7)
+  a:hover
+    color: white
+
+.post__excerpt
+  color:  #5F7288 
+  align-self: flex-start
+  justify-self: flex-end
+  overflow-wrap: break-word
+  word-wrap: break-word
+  -ms-word-break: break-all
+  word-break: break-word
+  -ms-hyphens: auto
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  hyphens: auto
+  p
+    margin: 0
+   
+
+.post__link
+  color: #293C50
+  position: absolute
+  right: 2em
+  bottom: 2em
+  //padding: .5em 1em
+  //border: 1px solid rgba(0,0,0,.3)
+  //border-radius: 3px 
+  text-transform: uppercase
+  font-weight: 500
+  margin-top: auto
+  transition-property: color
+  transition-duration: .15s
+  transition-timing-function: $easing-function
+  &:hover
+    color: #6F64F2
+  i 
+    color: #293C50
+
+.post__header--link
+  display: none
+  text-transform: uppercase
+  font-weight: 500
+  @media only screen and (max-width: $mobile-break)
+    display: inline
+    position: absolute
+    bottom: $post-padding
+    right: $post-padding
+    color: white
+
+.tags-list
+  margin: 0
+  padding: 0
+
+.tags-list-item
+  a
+    -webkit-transition: color .15s $easing-function
+    transition: color .15s $easing-function
+    text-decoration: none
+    text-transform: uppercase
+  -webkit-appearance: none
+  float: left
+  padding-right: .5em
+  list-style: none
+  margin-left: 0
+  padding-left: 0
+  text-align: center
+  position: relative
+  z-index: 4

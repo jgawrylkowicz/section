@@ -1,0 +1,154 @@
+.article__bg
+  grid-column: 1 / 5
+  grid-row: 1 / 3
+  z-index: -1
+  height: calc(100% + 35px)
+  background: #E7EDF3
+  transition: opacity 1s $easing-function
+ 
+#article__img
+  position: relative
+  width: auto
+  margin: 0 auto
+  width: 100%
+  grid-area: header-img
+  will-change: box-shadow
+
+.article__img--shadow
+  filter: drop-shadow($shadow-blur $shadow-color)
+
+// progressive img loading
+
+a.progressive 
+  position: relative
+  display: block
+  overflow: hidden
+  outline: none
+
+a.progressive:not(.replace) 
+  cursor: default
+
+a.progressive img 
+  display: block
+  width: 100%
+  max-width: none
+  height: auto
+  //border: 0 none
+
+a.progressive img.preview 
+  filter: blur(2vw)
+
+a.progressive img.reveal 
+  position: absolute
+  left: 0
+  top: 0
+  will-change: opacity
+  animation: reveal 1s $easing-function
+  
+a.progressive, a.progressive img.reveal 
+  border-radius: .75vw
+  
+@keyframes reveal 
+  0% 
+    opacity: 0
+  100% 
+    opacity: 1
+
+.article__bar
+  z-index: 10
+  height: 106px
+  width: 100%
+  position: absolute
+  top: -100px
+  left: 0
+  right: 0
+
+
+.article-container
+  max-width: 700px
+  width: 100%
+  padding: 1em
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+
+.article 
+  animation-duration: .3s
+  animation-fill-mode: both
+  animation-name: fade-in
+  animation-timing-function: $easing-function
+
+.article__header
+  border-bottom: 1px solid rgba(0,0,0,.1)
+  grid-area: header
+  margin: 0 auto
+  width: 100%
+  &>div:nth-child(1)
+    grid-area: header-info
+  &>div:nth-child(2)
+    grid-area: header-th
+   
+.article__header--title
+  position: relative
+  z-index: 20
+  padding-top: 1.5rem
+  margin-bottom: 0em
+  text-align: left
+
+
+.article__header--description
+  padding-bottom: 2em
+  padding-top: 1em
+  font-size: 1.2em
+  
+.article__header--subtitle
+  display: flex
+  flex-direction: row
+  justify-content: center
+
+.article__header--title
+  color: #293C50
+
+
+.article__header--tags, .article__header--date
+  font-size: .8em
+  font-weight: 600
+
+.article__header--date
+  margin: 0
+  padding: 0
+
+.article__header--links
+  display: flex
+  justify-content: center
+
+.header-link
+  color: rgba(255,255,255,.9)
+  background-color: #3CC8E7
+  padding: .75em 2em
+  font-size: $base-font-size
+  font-weight: 600
+  border-radius: 2em
+  text-align: center
+  min-width: 10em
+  margin: 0 1em
+  -webkit-filter: drop-shadow(0 .5em 1em  #3CC8E7)
+  filter: drop-shadow(0 .5em 1em #3CC8E7)
+  transition: background-color .5s $easing-function, color .3s $easing-function, transform .3s $easing-function
+  &:hover
+    transform: translateY(-4px) scale(1.01)
+    
+
+.article__content
+  grid-area: content
+  margin: 0
+  z-index: 1000
+  p
+    margin: 2rem 0
+  h2
+    color: #293C50 
+    margin: 0
+  img
+    width: 100%
+    filter: drop-shadow($shadow-blur $shadow-color)
+
