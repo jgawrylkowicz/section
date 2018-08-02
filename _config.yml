@@ -27,12 +27,21 @@ menu:
   Home:
     url: /
     icon: fa-home
+    id: 'home'
   Projects:
     url: /
     icon: fa-home
+    id: 'projects'
+  jgawrylkowicz@gmail.com:
+    url: mailto:jgawrylkowicz@gmail.com
+    icon:
+    id: 
+    
 
 thumbnail:
   default: 'white'
+  automatic_background: false
+
 sns:
   email:
     url: mailto:jgawrylkowicz@gmail.com
@@ -79,6 +88,6 @@ scripts:
 - /js/anime.min.js
 - /js/barba.min.js
 - /js/pace.min.js
-- /js/barba-config.min.js
-- /js/progressive-image.min.js
+- /js/config.min.js
+
 

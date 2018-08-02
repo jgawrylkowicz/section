@@ -85,7 +85,6 @@
   width: 100%
   z-index: 100
 
-
 .post-container
   display: grid
   grid-template-columns: 1fr
@@ -93,14 +92,11 @@
   height: 100%
   width: 100%
 
-.post__header, .post__header--thumbnail
+.post__header
   display: flex
   flex-direction: column
-
-.post__header
-  color: #293C50 
-
-.post__header--thumbnail
+  padding: $post-padding
+  padding-bottom: 0
   color: white
 
 .post__footer
@@ -108,19 +104,11 @@
   flex-direction: column
   background: $sidebar-background-color
   height: 100%
-
-
-.post__header--thumbnail, .post__excerpt--thumbnail,
-  padding: $post-padding
-  padding-bottom: 0
-
-.post__footer
   padding: $post-padding
   padding-top: 1rem
   z-index: 2
   border-bottom-right-radius: $card-border-radius
   border-bottom-left-radius: $card-border-radius
-
 
 .post__thumbnails
   align-self: center
@@ -146,7 +134,6 @@
   &.portrait
     width: $post-width  * 0.5652  * 1.2 
     height: $post-width * 1.2
-    
 
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
@@ -157,7 +144,7 @@
         transition-delay: .03s * $exp
         opacity: pow(.6, $exp)
         border-radius: 3px
-      
+
   &>img
     transition: all .3s $easing-function
   &>div
@@ -196,7 +183,7 @@
 .post__header--date
   color: rgba(255,255,255,.7)
 
-.post__header--tags, .post__header--tags--thumbnail
+.post__header--tags
   display: inline-flex
   height: 1.25em
   overflow: hidden
@@ -228,7 +215,6 @@
   p
     margin: 0
    
-
 .post__link
   color: #293C50
   position: absolute

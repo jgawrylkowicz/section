@@ -1,10 +1,11 @@
 extends includes/layout.pug
 block content
-  -let background = (page.background) ? page.background : theme.thumbnail.default;
-  -let thumbnail_modifier = (page.background) ? '--thumbnail' : '';
-
-  div(class="article__bg")
   
+  if (theme.thumbnail.automatic_background)
+    div(class="article__bg", style={background: lighten(page.color.primary, 35)})
+  else 
+    div(class="article__bg", style={background: page.color.background})
+
   #article__img
     a(class="progressive replace" 
     alt="image" 
@@ -13,7 +14,7 @@ block content
     href=page.thumbnail.url_hq)
       img#article_preview(class="preview" src=page.thumbnail.url_preview width="100%" height="100%")
   
-  div(class="article__bar", style={background: background} )
+  div(class="color-bar", style={background: page.color.primary} )
 
   div(class="article__header")
     div(class="article-container")

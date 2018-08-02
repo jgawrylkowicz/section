@@ -10,7 +10,7 @@ body
   background-attachment: fixed
   background-size: cover
   margin: 0
-  color: #293c50
+  color: $text-color
   text-rendering: optimizeLegibility
 
 html
@@ -67,6 +67,10 @@ li
 
 h1
   font-size: $step-up-3
+  text-decoration: underline lighten($secondary, 10)
+  text-decoration-skip-ink: auto
+  -webkit-text-decoration: underline lighten($secondary, 10)
+  -webkit-text-decoration-skip-ink: auto
 
 h2
   font-size: $step-up-2
@@ -100,7 +104,7 @@ ul
   max-width: 10em
   margin: 1rem
   text-align: center
-  transition: all .3s cubic-bezier(.17,.67,.16,.99)
+  transition: all .3s $easing-function
 
   &>i
     font-size: 4rem
@@ -138,7 +142,7 @@ ul
   max-width: 1000px
   z-index: 4000
   width: 100%
-  transition: background .15s cubic-bezier(.17,.67,.16,.99)
+  transition: background .15s $easing-function
   height: $top-bar-height
   position: absolute
   top: 0
@@ -149,12 +153,11 @@ ul
   display: flex
   justify-content:  space-between
   font-weight: 500
-
   a
     padding: 0 20px
-    transition: color .15s cubic-bezier(.17,.67,.16,.99)
+    transition: color .15s $easing-function
   a:hover
-    color: black 
+    color: darken($text-color, 10)
 
 
 .top-bar--logo
@@ -173,7 +176,7 @@ ul
   
 .pace-inactive  .pace-progress
   opacity: 0
-  transition: opacity .5s cubic-bezier(.17,.67,.16,.99) 
+  transition: opacity .5s $easing-function
 
 .button--primary
   color: rgba(255,255,255,.9)
@@ -203,12 +206,14 @@ ul
   top: 0
   right: 100%
   width: 100%
-  height: 6px
+  height: $color-bar-height
 
-.iso
-  //transform: scale(1.4)
-  margin-left: -6em
-  width: 140%
-  height: auto
-  @media only screen and (max-width: $break-l)
-    display: none
+.color-bar
+  z-index: 10
+  height: $color-bar-height
+  width: 100%
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  background: $secondary

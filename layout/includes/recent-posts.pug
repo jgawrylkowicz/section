@@ -6,24 +6,21 @@ div
 div(class="posts")
   if page.posts.length > 0
     each post in page.posts.sort('date', -1).limit(10).toArray()
-      -let background = (post.background) ? post.background : theme.thumbnail.default;
-      -let thumbnail_modifier = ''
-      if post.thumbnail
-        -thumbnail_modifier = '--thumbnail'
 
       div(class="post")
         a(class='post-link', data-pjax href=config.root + post.path)
         div(class="post-container")
-          div(class="post__header" + thumbnail_modifier,  style={background: background})
+          div(class="post__header" style={background: post.color.primary})
             div(class="post__header--title")
               h2
                 a(href=config.root + post.path)= post.title
               div(class="post__header--date")
                 !=date(post.date, date_format)
 
-            //if post.tags.length > 0 
-              div(class="post__header--tags" + thumbnail_modifier)
-                !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
+            if false
+              if post.tags.length > 0 
+                div(class="post__header--tags")
+                  !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
             if post.thumbnail
 
@@ -34,10 +31,12 @@ div(class="posts")
                 div(class="post__thumbnail--background")
                 div(class="post__thumbnail--background")  
                 div(class="post__thumbnail--background")
-              
-            //a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
+            if false
+              a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
                         
           div(class="post__footer")
             div(class='post__excerpt')
               !=post.description
-            //a(class='post__link', data-pjax href=config.root + post.path)="More"
+
+            if false
+              a(class='post__link', data-pjax href=config.root + post.path)="More"

@@ -1,6 +1,7 @@
 Barba.Pjax.Dom.containerClass = 'container';
 Barba.Pjax.Dom.wrapperId = 'wrapper';
 Barba.Pjax.start();
+Barba.Prefetch.init();
 
 var FadeTransition = Barba.BaseTransition.extend({
   start: function() {
@@ -52,14 +53,14 @@ Barba.Pjax.getTransition = function() {
 Barba.Dispatcher.on('transitionCompleted', function() {
   let el = document.getElementById("article__img");
   if (el != null){
-    //el.classList.add("article__img--shadow");
+    el.classList.add("article__img--shadow");
   }
 });
 
 window.onload = function(){
   let el = document.getElementById("article__img");
   if (el != null){
-    //el.classList.add("article__img--shadow");
+    el.classList.add("article__img--shadow");
   }
 }
 

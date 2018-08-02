@@ -266,16 +266,6 @@ a.progressive, a.progressive img.reveal {
   }
 }
 
-.article__bar {
-  z-index: 10;
-  height: 106px;
-  width: 100%;
-  position: absolute;
-  top: -100px;
-  left: 0;
-  right: 0;
-}
-
 .article-container {
   max-width: 700px;
   width: 100%;
@@ -622,7 +612,7 @@ a.progressive, a.progressive img.reveal {
   width: 100%;
 }
 
-.post__header, .post__header--thumbnail {
+.post__header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -630,13 +620,8 @@ a.progressive, a.progressive img.reveal {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-.post__header {
-  color: #293C50;
-}
-
-.post__header--thumbnail {
+  padding: 2em;
+  padding-bottom: 0;
   color: white;
 }
 
@@ -650,14 +635,6 @@ a.progressive, a.progressive img.reveal {
           flex-direction: column;
   background: #f9fcff;
   height: 100%;
-}
-
-.post__header--thumbnail, .post__excerpt--thumbnail {
-  padding: 2em;
-  padding-bottom: 0;
-}
-
-.post__footer {
   padding: 2em;
   padding-top: 1rem;
   z-index: 2;
@@ -817,7 +794,7 @@ a.progressive, a.progressive img.reveal {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.post__header--tags, .post__header--tags--thumbnail {
+.post__header--tags {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -927,11 +904,11 @@ a.progressive, a.progressive img.reveal {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background: #F4F7FA;
+  background: white;
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
-  color: #293c50;
+  color: #041811;
   text-rendering: optimizeLegibility;
 }
 
@@ -1005,6 +982,10 @@ li {
 
 h1 {
   font-size: 3.375em;
+  text-decoration: underline #c8d2da;
+  text-decoration-skip-ink: auto;
+  -webkit-text-decoration: underline #c8d2da;
+  -webkit-text-decoration-skip-ink: auto;
 }
 
 h2 {
@@ -1202,18 +1183,17 @@ ul {
   top: 0;
   right: 100%;
   width: 100%;
-  height: 6px;
+  height: 0.25em;
 }
 
-.iso {
-  margin-left: -6em;
-  width: 140%;
-  height: auto;
-}
-
-@media only screen and (max-width: 970px) {
-  .iso {
-    display: none;
-  }
+.color-bar {
+  z-index: 10;
+  height: 0.25em;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #AAB9C5;
 }
 /*# sourceMappingURL=section.css.map */
