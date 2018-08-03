@@ -14,11 +14,17 @@ html(lang=config.language)
     meta(name='desciption', content=config.description)
     meta(name='title', content=pageTitle)
     meta(name='viewport', content='width=device-width, initial-scale=1.0')    
+    meta(http-equiv="Cache-control" content="public")
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       //- stylesheets list from config.yml
       each url in theme.stylesheets
         link(rel='stylesheet', href=url)
     link(rel="icon", href=config.root + 'img/logo-128.png')
+
+    if theme.scripts !== undefined && theme.scripts.length > 0
+      //- scripts list from config.yml
+      each url in theme.scripts
+        script(src=url defer)
   body
     include topbar.pug
     #wrapper
@@ -41,7 +47,4 @@ html(lang=config.language)
               block content   
             include bottombar.pug
 
-    if theme.scripts !== undefined && theme.scripts.length > 0
-      //- scripts list from config.yml
-      each url in theme.scripts
-        script(src=url)
+

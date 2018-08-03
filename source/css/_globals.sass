@@ -1,7 +1,7 @@
 $line-height: 1.6
 $ratio: 1.5
-$top-bar-height: 4em
-$color-bar-height: .25em
+$top-bar-height: 4em + 1em
+$color-bar-height: .3em
 
 $break-xxs: 360px
 $break-xs: 400px
@@ -44,7 +44,6 @@ $text-color: rgb(4, 24, 17)
 $primary: #39A8EA
 $secondary: #AAB9C5 
 
-
 $easing-function: cubic-bezier(.17,.67,.16,.99)
 
 @function pow($number, $exponent) 
@@ -53,6 +52,12 @@ $easing-function: cubic-bezier(.17,.67,.16,.99)
     @for $i from 1 through $exponent 
       $value:  $value * $number
   @return $value
+
+@mixin underline($color) 
+  text-decoration: underline $color
+  text-decoration-skip-ink: auto
+  -webkit-text-decoration: underline $color
+  -webkit-text-decoration-skip-ink: auto
 
 @font-face 
   font-family: 'IBM Plex Sans'

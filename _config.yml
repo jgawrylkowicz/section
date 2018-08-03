@@ -35,7 +35,7 @@ menu:
   jgawrylkowicz@gmail.com:
     url: mailto:jgawrylkowicz@gmail.com
     icon:
-    id: 
+    id: email
     
 
 thumbnail:
@@ -81,7 +81,7 @@ favicon: /img/logo-128.png
 
 # stylesheets loaded in the <head>
 stylesheets:
-- /css/section.css
+- /css/section.min.css
 
 # scripts loaded in the end of the body
 scripts:
