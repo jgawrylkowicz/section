@@ -81,13 +81,13 @@ favicon: /img/logo-128.png
 
 # stylesheets loaded in the <head>
 stylesheets:
-- /css/section.css
+- /css/section.min.css
 
 # scripts loaded in the end of the body
 scripts:
 - /js/anime.min.js
 - /js/barba.min.js
 - /js/pace.min.js
-- /js/config.js
+- /js/config.min.js
 
 
