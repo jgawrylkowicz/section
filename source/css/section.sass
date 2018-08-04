@@ -22,15 +22,15 @@ html
   touch-action: manipulation
   word-spacing: 0.04em
   letter-spacing: 0.02em
-
-  
+  animation: fadein 2s
+  animation-timing-function: $easing-function
 
 body, html
   font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
   font-weight: 400
   overflow-x: hidden
   font-size: $base-font-size
-
+ 
   @media only screen and (min-width: $break-xs) and (max-width: $break-s)
     font-size: .90em
   @media only screen and (max-width: $break-xs)
@@ -53,6 +53,12 @@ a
 h1, h2, h3, h4, h5, h6, ul
   padding-top: 0
   margin-top: 0
+
+@keyframes fadein 
+    from 
+      opacity: 0
+    to 
+      opacity: 1
 
 h1, h2, h3, h4, h5, h6
   font-weight: 600
@@ -140,7 +146,7 @@ ul
   align-items: center 
   padding: 0 1em
   max-width: 1000px
-  z-index: 4000
+  z-index: 6000
   width: 100%
   transition: background .15s $easing-function
   height: $top-bar-height
@@ -148,6 +154,28 @@ ul
   top: 1em
   left: 0
   right: 0
+
+.top-bar--onscroll
+  display: flex
+  justify-content: space-between
+  margin-left: auto
+  margin-right: auto
+  align-items: center 
+  padding: 0 1em
+  max-width: 1000px
+  height: 4em
+  z-index: 5000
+
+.top-bar__container
+  opacity: 0
+  position: fixed
+  z-index: 4000
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  background: rgb(255,255,255)
+  box-shadow: $shadow-blur $shadow-color
 
 .top-bar--nav
   display: flex

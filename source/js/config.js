@@ -19,7 +19,7 @@ var FadeTransition = Barba.BaseTransition.extend({
       targets: this.oldContainer,
       opacity: 0,
       easing: [.17,.67,.16,.99],
-      duration: 500
+      duration: 1000
     });
 
     return animation.finished;
@@ -41,7 +41,7 @@ var FadeTransition = Barba.BaseTransition.extend({
       targets: this.newContainer,
       opacity: 1,
       easing: [.17,.67,.16,.99],
-      duration: 500
+      duration: 1000
     });
 
     animation.finished.then(_this.done());
@@ -91,7 +91,7 @@ function getPercentage(){
   return (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
 }
 
-// SCrolling to a postition 
+// Scrolling to a postition 
 
 document.getElementById('home').onclick = function(e){
 
@@ -220,3 +220,27 @@ if (window.addEventListener
 
 }
 
+// Top bar scrolling behavior
+
+window.addEventListener('scroll', function(e) {
+
+  let el = document.getElementById('top-bar--onscroll');
+  if (el != null){
+    el.style.opacity = getOpacity();
+  }
+
+});
+
+function getOpacity(){
+
+  let offset = 60;
+  let animation_start = 0 + offset;
+  let animation_end = 180 + offset;
+
+  if (window.scrollY < animation_start ) return 0;
+  else {
+    let opacity = window.scrollY / animation_end;
+    return (opacity <= 1) ? opacity : 1;
+  }
+
+}

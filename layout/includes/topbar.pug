@@ -7,4 +7,14 @@
     each values, label in theme.menu
       a(href=values.url id=values.id)!=label
 
+#top-bar--onscroll(class='top-bar__container')
+  div(class='top-bar--onscroll')
+    div(class="top-bar--logo")
+      !="J" 
+      span
+        !="G" 
+    div(class="top-bar--nav")
+      each values, label in theme.menu
+        a(href=values.url id=values.id)!=label
+
 
