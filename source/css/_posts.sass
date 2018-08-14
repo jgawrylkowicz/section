@@ -19,20 +19,17 @@
 
   @media only screen and (min-width: $break-l)
     grid-template-columns: repeat(auto-fit, $post-width)
-  @for $i from 1 through 10
-    &>div:nth-child(#{$i})
-      animation-delay: .15s * $i
 
 .post
   width: 100%
   height: 100vw
   position: relative
   display: inline-block
-  transition: all .3s $easing-function
+  transition: box-shadow .4s $easing-function .2s, transform .4s $easing-function, opacity .4 $easing-function
   overflow: hidden
   background: $card-background
   border-radius: $card-border-radius
-  box-shadow: 0 6px 24px rgba(50,50,50,0.2)
+  box-shadow: $double-shadow
   cursor: pointer
   will-change: transform, box-shadow
   @media only screen and (min-width: $break-s)
@@ -40,22 +37,23 @@
     height: $post-height 
 
 .post::after 
-  box-shadow: 0 12px 48px rgba(50,50,50,.2)
   opacity: 0
+  box-shadow: 0 12px 48px rgba(50,50,50,1)
   position: absolute
   z-index: -1
   width: 100%
   height: 100%
   opacity: 0
   border-radius: $card-border-radius
-  transition: opacity .3s $easing-function
 
 .post:hover::after 
   opacity: 1
 
 .post:hover
   transform: scale(1.03)
+  //box-shadow: 0 12px 48px rgba(50,50,50,.2), 0 2px 8px rgba(50,50,50,0.1)
   
+
 .post:hover .post__thumbnails
   &>img
     transform: scale(1.02) 

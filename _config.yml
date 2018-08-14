@@ -81,7 +81,7 @@ favicon: /img/logo-128.png
 
 # stylesheets loaded in the <head>
 stylesheets:
-- /css/section.min.css
+- /css/section.css
 
 # scripts loaded in the end of the body
 scripts:
@@ -89,5 +89,7 @@ scripts:
 - /js/barba.min.js
 - /js/pace.min.js
 - /js/config.min.js
+#- /js/dynamic-name.js
+
 
 

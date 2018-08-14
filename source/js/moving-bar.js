@@ -9,5 +9,11 @@ window.addEventListener('scroll', function(e) {
 });
 
 function getPercentage(){
-  return (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+  let percentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+  if (percentage >= 100) return 100;
+  if (percentage <= 0) return 0;
+  
+  return percentage;
 }

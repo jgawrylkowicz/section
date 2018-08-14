@@ -20,8 +20,6 @@ html
   height: 100%
   width: 100%
   touch-action: manipulation
-  word-spacing: 0.04em
-  letter-spacing: 0.02em
   animation: fadein 2s
   animation-timing-function: $easing-function
 
@@ -62,9 +60,11 @@ h1, h2, h3, h4, h5, h6, ul
 
 h1, h2, h3, h4, h5, h6
   font-weight: 600
+  word-spacing: 0.04em
+  letter-spacing: 0.02em
 
 h1, h2, h3
-  line-height: 1.2
+  line-height: 1
   margin-left: -2px
 
 ul
@@ -87,6 +87,7 @@ h4
   font-size: 1em
 
 p
+  color: rgb(101, 105, 109)
   overflow-wrap: break-word
   word-wrap: break-word
   -ms-word-break: break-all
@@ -154,6 +155,8 @@ ul
   top: 1em
   left: 0
   right: 0
+  transition: opacity .2s $easing-function
+  
 
 .top-bar--onscroll
   display: flex
@@ -165,6 +168,7 @@ ul
   max-width: 1000px
   height: 4em
   z-index: 5000
+  
 
 .top-bar__container
   opacity: 0
@@ -175,17 +179,19 @@ ul
   right: 0
   width: 100%
   background: rgb(255,255,255)
-  box-shadow: $shadow-blur $shadow-color
+  box-shadow: $double-shadow
+  transition: opacity .2s $easing-function
 
 .top-bar--nav
   display: flex
+  font-weight: 500
   justify-content:  space-between
   a
     padding: 0 20px
-    opacity: .5
-    transition: color .15s $easing-function
+    text-shadow: none 
+    transition: all .3s $easing-function
   a:hover
-    opacity: 1
+    color: $primary
 
 
 .top-bar--logo
@@ -193,8 +199,10 @@ ul
   text-transform: uppercase
   overflow: visible
   font-weight: 400
+  color: $primary
   span
-    font-weight: 500
+    font-weight: 600
+    letter-spacing: -2px
 
 .pace 
   -webkit-pointer-events: none
@@ -249,3 +257,18 @@ ul
 
 #email
   //@include underline($primary)
+
+section 
+  //@for $i from 1 through 10
+  //:nth-child(#{$i})
+  & > *
+    opacity: 0
+    transform: translate(0, 40px)
+    //$delay: .1s * $i
+    transition: transform .4s $easing-function .2s, opacity .4s $easing-function .2s
+
+section.visible  
+  & > *
+    opacity: 1
+    transform: translate(0, 0)
+  

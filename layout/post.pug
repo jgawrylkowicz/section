@@ -4,7 +4,8 @@ block content
   if (theme.thumbnail.automatic_background)
     div(class="article__bg", style={background: lighten(page.color.primary, 35)})
   else 
-    div(class="article__bg", style={background: page.color.background})
+    //div(class="article__bg", style={background: page.color.background})
+    div(class="article__bg")
 
   #article__img
     a(class="progressive replace" 

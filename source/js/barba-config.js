@@ -49,24 +49,3 @@ var FadeTransition = Barba.BaseTransition.extend({
 Barba.Pjax.getTransition = function() {
   return FadeTransition;
 };
-
-Barba.Dispatcher.on('transitionCompleted', function() {
-  let el = document.getElementById("article__img");
-  if (el != null){
-    el.classList.add("article__img--shadow");
-  }
-});
-
-window.onload = function(){
-  let el = document.getElementById("article__img");
-  if (el != null){
-    el.classList.add("article__img--shadow");
-  }
-}
-
-Barba.Dispatcher.on('linkClicked', function() {
-  let el = document.getElementById("article__img");
-  if (el != null){
-    el.classList.remove("article__img--shadow");
-  }
-});

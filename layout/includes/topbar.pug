@@ -1,8 +1,8 @@
 #top-bar(class='top-bar')
   div(class="top-bar--logo")
     !="J" 
-    span
-      !="G" 
+    span(class="surname")
+      !="Gawrylkowicz" 
   div(class="top-bar--nav")
     each values, label in theme.menu
       a(href=values.url id=values.id)!=label
@@ -11,8 +11,8 @@
   div(class='top-bar--onscroll')
     div(class="top-bar--logo")
       !="J" 
-      span
-        !="G" 
+      span(class="surname")
+        !="Gawrylkowicz" 
     div(class="top-bar--nav")
       each values, label in theme.menu
         a(href=values.url id=values.id)!=label
