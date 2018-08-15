@@ -120,22 +120,6 @@ ul
 .sns__link:hover
   transform: scale(1.2)
 
-.bottom-bar
-  grid-area: bottom-bar-start / bottom-bar-start / bottom-bar-end / bottom-bar-end 
-  & > div:nth-child(1)
-    font-size: $step-down-1
-    p
-      text-align: center
-
-.bottom-bar--dark
-  grid-area: bottom-bar-start / bottom-bar-start / bottom-bar-end / bottom-bar-end 
-  & > div:nth-child(1)
-    font-size: $step-down-1
-    p
-      text-align: center
-      color: white
-
-
 // Container for the top information
 // fixed for mobile
 .top-bar
@@ -187,9 +171,12 @@ ul
   font-weight: 500
   justify-content:  space-between
   a
-    padding: 0 20px
+    padding: 0 1em
     text-shadow: none 
     transition: all .3s $easing-function
+    @media only screen and (max-width: $mobile-break)
+      padding: 0 .75em
+      
   a:hover
     color: $primary
 
