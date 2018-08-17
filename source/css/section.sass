@@ -174,7 +174,7 @@ ul
     padding: 0 1em
     text-shadow: none 
     transition: all .3s $easing-function
-    @media only screen and (max-width: $mobile-break)
+    @media only screen and (max-width: $break-l)
       padding: 0 .75em
       
   a:hover
@@ -245,17 +245,17 @@ ul
 #email
   //@include underline($primary)
 
-section 
-  //@for $i from 1 through 10
-  //:nth-child(#{$i})
-  & > *
-    opacity: 0
-    transform: translate(0, 40px)
-    //$delay: .1s * $i
-    transition: transform .4s $easing-function .2s, opacity .4s $easing-function .2s
 
-section.visible  
-  & > *
-    opacity: 1
-    transform: translate(0, 0)
+// section 
+//   @for $i from 1 through 10
+//     & > :nth-child(#{$i})
+//       opacity: 0
+//       transform: translate(0, 40px)
+//       $delay: .15s * $i
+//       transition: transform .4s $easing-function $delay, opacity .4s $easing-function .2s
+
+// section.visible  
+//   & > *
+//     opacity: 1
+//     transform: translate(0, 0)
   

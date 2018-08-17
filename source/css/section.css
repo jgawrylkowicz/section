@@ -175,6 +175,12 @@
   margin: 12rem 0;
 }
 
+@media only screen and (max-width: 970px) {
+  .contact > section:nth-child(1), .projects > section:nth-child(1), .welcome > section:nth-child(1), .contact-sns > section:nth-child(1) {
+    margin: 6rem 0 !important;
+  }
+}
+
 .bottom-bar {
   display: contents;
 }
@@ -186,29 +192,6 @@
 
 .bottom-bar > div:nth-child(1) p {
   text-align: center;
-}
-
-.bottom-bar > div.section-bg {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-column: 1 / 5;
-  -ms-grid-row: 5;
-  -ms-grid-row-span: 4;
-  grid-row: 5 / 9;
-  height: 100%;
-  width: 100%;
-  background: #f5f5f5;
-}
-
-@media only screen and (max-width: 970px) {
-  .bottom-bar > div.section-bg {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 4;
-    grid-column: 1 / 5;
-    -ms-grid-row: 6;
-    -ms-grid-row-span: 3;
-    grid-row: 6 / 9;
-  }
 }
 
 #article__img, .article__header {
@@ -416,6 +399,7 @@ a.progressive, a.progressive img.reveal {
   grid-area: content;
   margin: 0;
   z-index: 1000;
+  margin-bottom: 6vw;
 }
 
 .article__content p {
@@ -504,11 +488,6 @@ a.progressive, a.progressive img.reveal {
 
 .post:hover::before {
   opacity: 1;
-}
-
-.post:hover {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
 }
 
 .post:hover .post__thumbnails > img {
@@ -1130,7 +1109,7 @@ ul {
   transition: all 0.3s cubic-bezier(0.17, 0.67, 0.16, 0.99);
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 970px) {
   .top-bar--nav a {
     padding: 0 .75em;
   }
@@ -1213,21 +1192,5 @@ ul {
   left: 0;
   right: 0;
   background: #2ab384;
-}
-
-section > * {
-  opacity: 0;
-  -webkit-transform: translate(0, 40px);
-          transform: translate(0, 40px);
-  -webkit-transition: opacity 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s, -webkit-transform 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s;
-  transition: opacity 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s, -webkit-transform 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s;
-  transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s, opacity 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s;
-  transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s, opacity 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s, -webkit-transform 0.4s cubic-bezier(0.17, 0.67, 0.16, 0.99) 0.2s;
-}
-
-section.visible > * {
-  opacity: 1;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
 }
 /*# sourceMappingURL=section.css.map */

@@ -41,7 +41,7 @@ var FadeTransition = Barba.BaseTransition.extend({
       easing: [.17,.67,.16,.99],
       duration: 500
     });
-
+    
     animation.finished.then(_this.done());
   }
 });

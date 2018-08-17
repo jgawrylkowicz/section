@@ -89,7 +89,8 @@ scripts:
 - /js/barba.min.js
 - /js/pace.min.js
 - /js/config.min.js
-#- /js/dynamic-name.js
+- /js/post-hover.js
+- /js/scroll-behavior.js
 
 
 
