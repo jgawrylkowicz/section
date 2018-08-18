@@ -11,17 +11,14 @@ section(class="posts")
         a(class='post-link', data-pjax href=config.root + post.path)
         div(class="post-container")
           div(class="post__header" style={background: post.color.primary})
-            div(class="post__header--title")
-              h2
-                a(href=config.root + post.path)= post.title
-              div(class="post__header--date")
-                !=date(post.date, date_format)
+            
+            div(class="post__header--tags")
+              !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
+              !=date(post.date, date_format)
 
-            if false
-              if post.tags.length > 0 
-                div(class="post__header--tags")
-                  !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
-
+            h2(class="post__header--title")
+              a(href=config.root + post.path)= post.title
+            
             if post.thumbnail
 
               div(class="post__thumbnails " + post.thumbnail.orientation)
@@ -30,7 +27,6 @@ section(class="posts")
                 div(class="post__thumbnail--background")  
                 div(class="post__thumbnail--background")
                 div(class="post__thumbnail--background")  
-                div(class="post__thumbnail--background")
             if false
               a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
                         

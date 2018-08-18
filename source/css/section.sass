@@ -2,9 +2,7 @@
 @import 'layouts'
 @import 'article'
 @import 'posts'
-
-
-      
+ 
 body
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
@@ -30,7 +28,7 @@ body, html
   font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
   font-weight: 400
   overflow-x: hidden
-  +fluid-type($min_width, $max_width, $min_font, $max_font)
+  +fluid-type('font-size', $min_width, $max_width, $min_font, $max_font)
 
 code
   font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
@@ -72,15 +70,15 @@ li
 
 h1   
   font-size: pow($mod_1, 4) * 1rem
-  @include fluid-type($min_width, $max_width, pow($mod_1, 3) *$min_font, pow($mod_2, 3) *$min_font)
+  +fluid-type('font-size', $min_width, $max_width, pow($mod_1, 3) *$min_font, pow($mod_2, 3) *$min_font)
 
 h2   
   font-size: pow($mod_1, 3) * 1rem
-  @include fluid-type($min_width, $max_width, pow($mod_1, 3) *$min_font, pow($mod_2, 3) *$min_font)
+  +fluid-type('font-size', $min_width, $max_width, pow($mod_1, 3) *$min_font, pow($mod_2, 3) *$min_font)
 
 h3 
   font-size: pow($mod_1, 2) * 1rem
-  @include fluid-type($min_width, $max_width, pow($mod_1, 2) *$min_font, pow($mod_2, 2) *$min_font)
+  +fluid-type('font-size', $min_width, $max_width, pow($mod_1, 2) *$min_font, pow($mod_2, 2) *$min_font)
 
 h4
   font-size: 1em
@@ -140,7 +138,6 @@ ul
   right: 0
   transition: opacity .2s $easing-function
   
-
 .top-bar--onscroll
   display: flex
   justify-content: space-between
@@ -152,7 +149,6 @@ ul
   height: 4em
   z-index: 5000
   
-
 .top-bar__container
   opacity: 0
   position: fixed
@@ -176,7 +172,6 @@ ul
       
   a:hover
     color: $primary
-
 
 .top-bar--logo
   font-size: $step-up-1

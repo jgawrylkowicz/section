@@ -1,9 +1,3 @@
-
-.posts
-  @media only screen and (max-width: $mobile-break) 
-    padding-left: .5rem
-    padding-right: .5rem
-
 // container for the recents posts
 .posts
   display: grid
@@ -15,7 +9,7 @@
   align-items: center
   grid-auto-rows: minmax(auto, 1fr)
   grid-template-columns: 1fr
-  justify-items: center
+  justify-content: center
 
   @media only screen and (min-width: $break-l)
     grid-template-columns: repeat(auto-fit, $post-width)
@@ -51,10 +45,11 @@
 .post:hover::before 
   opacity: 1
 
+// No longer needed since the animation is done using anime.js
 .post:hover
   //transform: scale(1.03)
   //box-shadow: 0 12px 48px rgba(50,50,50,.2), 0 2px 8px rgba(50,50,50,0.1)
-  
+
 .post:hover .post__thumbnails
   &>img
     transform: scale(1.02) 
@@ -63,18 +58,18 @@
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $exp: ($i - 1) 
-        $factor_size: pow(.93, $exp)
-        $factor_translate: pow(1.05, $exp)
-        transform: scale(1 * $factor_size) translateY(-8% * $exp * $factor_translate) 
+        $factor-size: pow(.93, $exp)
+        $factor-translate: pow(1.05, $exp)
+        transform: scale(1 * $factor-size) translateY(-8% * $exp * $factor-translate)
         opacity: pow(.7, $exp)
 
   &.portrait 
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $exp: ($i - 1) 
-        $factor_size: pow(.93, $exp)
-        $factor_translate: pow(1.05, $exp)
-        transform: scale(1 * $factor_size) translateY(-6% * $exp * $factor_translate) 
+        $factor-size: pow(.93, $exp)
+        $factor-translate: pow(1.05, $exp)
+        transform: scale(1 * $factor-size) translateY(-6% * $exp * $factor-translate) 
         transition-delay: .03s * $exp
         opacity: pow(.7, $exp)
 
@@ -115,13 +110,17 @@
   position: absolute
   transform-style: preserve-3d
   transform: translate3d(0,0,0)
+
+  // TODO: Calculating the value of the dynamic width to decrease pressure between breaking points
+  // and make the transition seamless 
+  // exact factors still need to be calculated
   
   &.landscape
     width: $post-width * .85
     height: $post-width * 0.5652 * .85
 
     @media only screen and (max-width: $break-s)
-      $dynamic-width: 75vw
+      $dynamic-width: 78vw
       width: $dynamic-width
       height: $dynamic-width * 0.5652
   
@@ -159,7 +158,6 @@
   &>div
     transition: all .3s $easing-function
  
-
 .post__thumbnail
   width: 100%
   height: 100%
@@ -181,33 +179,25 @@
 
 .post__header--title
   position: relative
+  margin-top: .1em
+  margin-left: .025em
   display: flex
   align-items: baseline
   flex-direction: row
   justify-content: space-between
   z-index: 20
-  h2
-    margin-bottom: 0.2rem
-
-.post__header--date
-  color: rgba(255,255,255,.7)
 
 .post__header--tags
   display: inline-flex
   height: 1.25em
   overflow: hidden
-  font-size: $step-down-1
-
-.post__header--tags, .article__header--tags
-  color: #5F7288
-  a:hover
-    color: black
- 
-.post__header--tags--thumbnail
-  color: rgba(255,255,255,.7)
-  a:hover
-    color: white
-
+  font-size: .8em
+  font-weight: 600
+  color: rgba(255,255,255,.5)
+  display: flex
+  width: 100%
+  justify-content: space-between
+  
 .post__excerpt
   align-self: flex-start
   justify-self: flex-end
@@ -222,25 +212,6 @@
   p
     margin: 0
    
-.post__link
-  color: #293C50
-  position: absolute
-  right: 2em
-  bottom: 2em
-  //padding: .5em 1em
-  //border: 1px solid rgba(0,0,0,.3)
-  //border-radius: 3px 
-  text-transform: uppercase
-  font-weight: 500
-  margin-top: auto
-  transition-property: color
-  transition-duration: .15s
-  transition-timing-function: $easing-function
-  &:hover
-    color: #6F64F2
-  i 
-    color: #293C50
-
 .post__header--link
   display: none
   text-transform: uppercase

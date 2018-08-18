@@ -17,7 +17,7 @@ block content
   
   div(class="color-bar", style={background: page.color.primary} )
 
-  div(class="article__header")
+  section(class="article__header")
     div(class="article-container")
 
       if page.tags.length > 0 
@@ -31,7 +31,7 @@ block content
       
       p(class='article__header--description')=page.description
 
-  div(class="article__content")
+  section(class="article__content")
     div(class="article-container")
       !=page.content
               
