@@ -33,7 +33,7 @@ $max_width: 1200px
 $min_font: 14px
 $max_font: 18px
 $mod_1: 1.2 // mobile
-$mod_2: 1.6 // desktop
+$mod_2: 1.5 // desktop
 
 // Cards
 $max-card-width: 800px
@@ -63,7 +63,12 @@ $secondary: #AAB9C5
 // Others 
 $easing-function: cubic-bezier(.17,.67,.16,.99)
 
-
+@function pow($number, $exponent) 
+  $value: 1
+  @if $exponent > 0 
+    @for $i from 1 through $exponent 
+      $value:  $value * $number
+  @return $value
 
 @function strip-unit($value) 
   @return $value / ($value * 0 + 1)
@@ -82,13 +87,6 @@ $easing-function: cubic-bezier(.17,.67,.16,.99)
       
       @media screen and (min-width: $max-vw) 
         font-size: $max-font-size
-
-@function pow($number, $exponent) 
-  $value: 1
-  @if $exponent > 0 
-    @for $i from 1 through $exponent 
-      $value:  $value * $number
-  @return $value
 
 @mixin underline($color) 
   text-decoration: underline $color
@@ -114,7 +112,6 @@ $easing-function: cubic-bezier(.17,.67,.16,.99)
   font-style: normal
   font-weight: 400
   src: local("IBM Plex Sans"), local("IBMPlexSans"), url("/fonts/IBMPlexSans-Regular.woff") format("woff")
-
 
 \::-moz-selection, ::selection
   background: rgba(107, 79, 189, 0.4)

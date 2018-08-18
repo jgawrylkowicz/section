@@ -55,7 +55,6 @@
   //transform: scale(1.03)
   //box-shadow: 0 12px 48px rgba(50,50,50,.2), 0 2px 8px rgba(50,50,50,0.1)
   
-
 .post:hover .post__thumbnails
   &>img
     transform: scale(1.02) 
@@ -129,14 +128,12 @@
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $exp: ($i - 1) 
-        $factor_size: pow(.95, $exp)
-        $factor_translate: pow(1.05, $exp)
-        transform: scale(1 * $factor_size) translateY(-5% * $exp  * $factor_translate) 
+        $factor-size: pow(.95, $exp)
+        $factor-translate: pow(1.05, $exp)
+        transform: scale(1 * $factor-size) translateY(-5% * $exp  * $factor-translate) 
         transition-delay: .03s * $exp
         opacity: pow(.6, $exp)
         border-radius: 3px
-
-    
 
   &.portrait
     width: $post-width  * 0.5652  * 1.2 
@@ -150,9 +147,9 @@
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $exp: ($i - 1) 
-        $factor_size: pow(.95, $exp)
-        $factor_translate: pow(1.05, $exp)
-        transform: scale(1 * $factor_size) translateY(-3.5% * $exp * $factor_translate) 
+        $factor-size: pow(.95, $exp)
+        $factor-translate: pow(1.05, $exp)
+        transform: scale(1 * $factor-size) translateY(-3.5% * $exp * $factor-translate) 
         transition-delay: .03s * $exp
         opacity: pow(.6, $exp)
         border-radius: 3px
@@ -201,7 +198,6 @@
   overflow: hidden
   font-size: $step-down-1
 
-
 .post__header--tags, .article__header--tags
   color: #5F7288
   a:hover
@@ -213,7 +209,6 @@
     color: white
 
 .post__excerpt
-  //color:  #5F7288 
   align-self: flex-start
   justify-self: flex-end
   overflow-wrap: break-word
@@ -250,6 +245,7 @@
   display: none
   text-transform: uppercase
   font-weight: 500
+
   @media only screen and (max-width: $mobile-break)
     display: inline
     position: absolute
@@ -267,6 +263,7 @@
     transition: color .15s $easing-function
     text-decoration: none
     text-transform: uppercase
+  
   -webkit-appearance: none
   float: left
   padding-right: .5em
