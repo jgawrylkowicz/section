@@ -3,6 +3,8 @@
 @import 'article'
 @import 'posts'
 
+
+      
 body
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
@@ -22,18 +24,13 @@ html
   touch-action: manipulation
   animation: fadein 2s
   animation-timing-function: $easing-function
+  
 
 body, html
   font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
   font-weight: 400
   overflow-x: hidden
-  font-size: $base-font-size
- 
-  @media only screen and (min-width: $break-xs) and (max-width: $break-s)
-    font-size: .90em
-  @media only screen and (max-width: $break-xs)
-    font-size: .90em
-
+  +fluid-type($min_width, $max_width, $min_font, $max_font)
 
 code
   font-family: 'IBM Plex Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
@@ -60,8 +57,6 @@ h1, h2, h3, h4, h5, h6, ul
 
 h1, h2, h3, h4, h5, h6
   font-weight: 600
-  word-spacing: 0.04em
-  letter-spacing: 0.02em
 
 h1, h2, h3
   line-height: 1
@@ -74,15 +69,19 @@ ul
 li
   font-size: 1em
 
-h1
-  font-size: $step-up-3
 
+h1   
+  font-size: $mod_1*$mod_1*$mod_1*$mod_1 *1rem
+  @include fluid-type($min_width, $max_width, $mod_1*$mod_1*$mod_1 *$min_font, $mod_2*$mod_2*$mod_2 *$min_font)
 
-h2
-  font-size: $step-up-2
+h2   
+  font-size: $mod_1*$mod_1*$mod_1 *1rem
+  @include fluid-type($min_width, $max_width, $mod_1*$mod_1*$mod_1 *$min_font, $mod_2*$mod_2*$mod_2 *$min_font)
 
-h3
-  font-size: $step-up-1
+h3 
+  font-size: $mod_1*$mod_1 *1rem
+  @include fluid-type($min_width, $max_width, $mod_1*$mod_1 *$min_font, $mod_2*$mod_2 *$min_font);
+
 h4
   font-size: 1em
 
@@ -171,11 +170,9 @@ ul
   font-weight: 500
   justify-content:  space-between
   a
-    padding: 0 1em
+    padding: 0 calc(0.25em + .75vw)
     text-shadow: none 
     transition: all .3s $easing-function
-    @media only screen and (max-width: $break-l)
-      padding: 0 .75em
       
   a:hover
     color: $primary
@@ -188,6 +185,16 @@ ul
   font-weight: 400
   color: $primary
   span
+    font-weight: 600
+    letter-spacing: -2px
+    @media only screen and (max-width: $break-m)
+      display: none
+  
+.top-bar--logo::after
+  @media only screen and (max-width: $break-m)
+    content: 'G'
+    font-size: 1em
+    display: inline
     font-weight: 600
     letter-spacing: -2px
 

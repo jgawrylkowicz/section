@@ -25,6 +25,17 @@ $step-up-4: $step-up-3 * $ratio
 $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
+
+// Font globals
+
+$min_width: 320px
+$max_width: 1200px
+$min_font: 14px
+$max_font: 18px
+$mod_1: 1.2 // mobile
+$mod_2: 1.6 // desktop
+
+// Cards
 $max-card-width: 800px
 $card-border-radius: 10px
 $background-color: rgb(255,255,255)
@@ -33,20 +44,44 @@ $topbar-background-color: rgb(244,247,250)
 $card-background: rgb(255,255,255)
 $dark-mode-card: rgba(44,50,58,1)
 
+// Posts  
 $post-width: 460px
 $post-height: 520px
 $post-padding: 2em
 
+// Shadow 
 $shadow-color: rgba(0,0,0,0.1)
 $shadow-blur: 0 12px 48px
 $double-shadow: 0 6px 24px rgba(50,50,50,0.2), 0 1px 4px rgba(50,50,50,0.2)
 
+// Colors  
 $text-color: rgb(51, 51, 51)
 $subtext-color: rgb(101, 105, 109)
 $primary: rgb(42, 179, 132)
 $secondary: #AAB9C5 
 
+// Others 
 $easing-function: cubic-bezier(.17,.67,.16,.99)
+
+
+
+@function strip-unit($value) 
+  @return $value / ($value * 0 + 1)
+
+=fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) 
+  $u1: unit($min-vw)
+  $u2: unit($max-vw)
+  $u3: unit($min-font-size)
+  $u4: unit($max-font-size)
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 
+    & 
+      font-size: $min-font-size
+      @media screen and (min-width: $min-vw) 
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}))
+      
+      @media screen and (min-width: $max-vw) 
+        font-size: $max-font-size
 
 @function pow($number, $exponent) 
   $value: 1

@@ -116,10 +116,15 @@
   position: absolute
   transform-style: preserve-3d
   transform: translate3d(0,0,0)
-
+  
   &.landscape
     width: $post-width * .85
     height: $post-width * 0.5652 * .85
+
+    @media only screen and (max-width: $break-s)
+      $dynamic-width: 75vw
+      width: $dynamic-width
+      height: $dynamic-width * 0.5652
   
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
@@ -131,9 +136,16 @@
         opacity: pow(.6, $exp)
         border-radius: 3px
 
+    
+
   &.portrait
     width: $post-width  * 0.5652  * 1.2 
     height: $post-width * 1.2
+
+    @media only screen and (max-width: $break-s)
+      $dynamic-width: 75vw
+      width: $dynamic-width * 0.5652 * 1.5
+      height: $dynamic-width * 1.5
 
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
@@ -159,7 +171,7 @@
   z-index: 10
   box-shadow: 0 12px 48px rgba(50,50,50,0.4)
   will-change: transform
-
+  
 .post__thumbnail--background
   background-color: rgba(255,255,255,.6)
   width: 100%

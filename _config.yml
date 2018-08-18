@@ -90,7 +90,7 @@ scripts:
 - /js/pace.min.js
 - /js/config.min.js
 - /js/post-hover.js
-- /js/scroll-behavior.js
+#- /js/scroll-behavior.js
 
 
 
