@@ -76,6 +76,7 @@
   .layout {
     -ms-grid-columns: 2vh 1fr 2vh;
         grid-template-columns: 2vh 1fr 2vh;
+    grid-column-gap: 0rem;
         grid-template-areas: " . top-bar ." " . welcome . " " . welcome . "  " . projects-info . " " . projects . " " . contact . " " . contact-sns . " " . bottom-bar .";
   }
 }
