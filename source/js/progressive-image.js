@@ -75,11 +75,18 @@ if (window.addEventListener
         item.appendChild(img).addEventListener('animationend', function(e) {
 
           // remove preview image
+          // TODO: Add opacity transition on disapearing preview image
           var pImg = item.querySelector && item.querySelector('img.preview');
           if (pImg != null) {
             e.target.alt = pImg.alt || '';
-            item.removeChild(pImg);
-            e.target.classList.remove('reveal');
+            console.log(pImg);
+            pImg.style.opacity = 0;
+
+            pImg.addEventListener("transitionend", function(event) {
+              item.removeChild(pImg);        
+              e.target.classList.remove('reveal');
+            }, false);
+
           }
 
         });

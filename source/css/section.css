@@ -315,8 +315,8 @@ a.progressive img.reveal {
   left: 0;
   top: 0;
   will-change: opacity;
-  -webkit-animation: reveal 1s cubic-bezier(0.17, 0.67, 0.16, 0.99);
-          animation: reveal 1s cubic-bezier(0.17, 0.67, 0.16, 0.99);
+  -webkit-animation: reveal 2s cubic-bezier(0.17, 0.67, 0.16, 0.99);
+          animation: reveal 2s cubic-bezier(0.17, 0.67, 0.16, 0.99);
 }
 
 a.progressive, a.progressive img.reveal {
