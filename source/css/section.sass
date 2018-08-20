@@ -67,7 +67,6 @@ ul
 li
   font-size: 1em
 
-
 h1   
   font-size: pow($mod_1, 4) * 1rem
   +fluid-type('font-size', $min_width, $max_width, pow($mod_1, 3) *$min_font, pow($mod_2, 3) *$min_font)
@@ -93,6 +92,7 @@ p
   -moz-hyphens: auto
   -webkit-hyphens: auto
   hyphens: auto
+
 ul
   line-height: $line-height
 
@@ -126,17 +126,14 @@ ul
   margin-left: auto
   margin-right: auto
   align-items: center 
-  padding: 0 1em
   max-width: 1000px
   z-index: 6000
   width: 100%
-  transition: background .15s $easing-function
-  height: $top-bar-height
+  transition: background .2s $easing-function, opacity .2s $easing-function
   position: absolute
   top: 1em
   left: 0
   right: 0
-  transition: opacity .2s $easing-function
   
 .top-bar--onscroll
   display: flex
@@ -144,11 +141,17 @@ ul
   margin-left: auto
   margin-right: auto
   align-items: center 
-  padding: 0 1em
-  max-width: 1000px
-  height: 4em
   z-index: 5000
-  
+
+.top-bar--onscroll, .top-bar
+  padding: 0 .5em
+  max-width: 1000px
+  height: $top-bar-height
+  @media only screen and (max-width: $break-l)
+    //max-width: 750px
+    padding: 0 2vh
+
+
 .top-bar__container
   opacity: 0
   position: fixed
@@ -157,17 +160,21 @@ ul
   left: 0
   right: 0
   width: 100%
-  background: rgb(255,255,255)
+  background: $topbar-background-color
   box-shadow: $double-shadow
   transition: opacity .2s $easing-function
 
 .top-bar--nav
   display: flex
-  font-weight: 500
+  font-weight: 400
   justify-content:  space-between
   a
-    padding: 0 calc(0.25em + .75vw)
+    padding: 0 calc(0.5em + .75vw)
     text-shadow: none 
+    color: $subtext-color
+    text-transform: uppercase
+    font-weight: 600
+    font-size: .8em
     transition: all .3s $easing-function
       
   a:hover
@@ -237,8 +244,9 @@ ul
 .color-bar
   z-index: 9000
   height: $color-bar-height
-  width: 100%
+  width: 101vh
   position: fixed
+  border-radius: 12px
   top: 0
   left: 0
   right: 0

@@ -17,7 +17,7 @@
   max-width: 700px
   grid-area: header-img
   will-change: filter
-  filter: drop-shadow($shadow-blur $shadow-color)
+  filter: drop-shadow(0 15px 37px rgba(0,0,0,.2))
   
 // progressive img loading
 a.progressive 
@@ -67,7 +67,10 @@ a.progressive, a.progressive img.reveal
   grid-area: header
   margin: 0 auto
   width: 100%
-   
+
+.article__header::after
+  @include seperation-line()
+
 .article__header--title
   position: relative
   z-index: 20

@@ -17,7 +17,7 @@ var FadeTransition = Barba.BaseTransition.extend({
       targets: this.oldContainer,
       opacity: 0,
       easing: [.17,.67,.16,.99],
-      duration: 500
+      duration: 700
     });
 
     return animation.finished;
@@ -39,7 +39,7 @@ var FadeTransition = Barba.BaseTransition.extend({
       targets: this.newContainer,
       opacity: 1,
       easing: [.17,.67,.16,.99],
-      duration: 500
+      duration: 700
     });
     
     animation.finished.then(_this.done());
