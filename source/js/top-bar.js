@@ -1,8 +1,8 @@
 window.addEventListener('scroll', function(e) {
 
-  let offset = 30;
+  let offset = 25;
   let animation_start = 0 + offset;
-  let animation_end = 30 + offset;
+  let animation_end = 25 + offset;
 
   let static_bar = document.getElementById('top-bar');
   if (static_bar != null){

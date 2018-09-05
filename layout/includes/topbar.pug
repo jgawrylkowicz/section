@@ -1,20 +1,12 @@
 #top-bar(class='top-bar')
-  div(class="top-bar--logo")
-    !="J" 
-    span(class="surname")
-      !="Gawrylkowicz" 
-  div(class="top-bar--nav")
-    each values, label in theme.menu
-      a(href=values.url id=values.id)!=label
-
-#top-bar--onscroll(class='top-bar__container')
-  div(class='top-bar--onscroll')
+  div(class='top-bar__cnt')
     div(class="top-bar--logo")
-      !="J" 
+      !="Jakub" 
       span(class="surname")
         !="Gawrylkowicz" 
     div(class="top-bar--nav")
       each values, label in theme.menu
         a(href=values.url id=values.id)!=label
-
+    div(class='top-bar--contact')
+      a(class='button--primary' href='#')!='Contact'
 

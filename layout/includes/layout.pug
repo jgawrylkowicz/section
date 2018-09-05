@@ -25,6 +25,8 @@ html(lang=config.language)
       //- scripts list from config.yml
       each url in theme.scripts
         script(src=url defer)
+
+    -let animation = 'aos-fade-text';
   body
     include topbar.pug
     #wrapper
@@ -32,12 +34,14 @@ html(lang=config.language)
         if is_home()
           div(class="layout") 
             include welcome.pug
+            include info.pug
             div(class="projects")
               if body
                 div!= body
               else
                 block content   
-            //include contact.pug
+            include about.pug
+            include contact.pug
             include bottombar.pug
         else 
           div(class="article") 

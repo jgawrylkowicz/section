@@ -24,18 +24,15 @@ img:
 
 # main menu navigation
 menu:
-  Home:
-    url: /
-    icon: fa-home
-    id: 'home'
   Projects:
     url: /
     icon: fa-home
     id: 'projects'
-  jgawrylkowicz@gmail.com:
-    url: mailto:jgawrylkowicz@gmail.com
-    icon:
-    id: email
+  About:
+    url: /
+    icon: fa-home
+    id: 'projects'
+
     
 
 thumbnail:
@@ -82,14 +79,20 @@ favicon: /img/logo-128.png
 # stylesheets loaded in the <head>
 stylesheets:
 - /css/section.css
+- /css/aos.css
 
 # scripts loaded in the end of the body
 scripts:
 - /js/anime.min.js
 - /js/barba.min.js
 - /js/pace.min.js
+- /js/aos.js
 - /js/config.min.js
-#- /js/scroll-behavior.js
+- #/js/scroll-behavior.js
+- /js/post-hover.js
+- #/js/progressive-image.js
+- #/js/top-bar.js
+- #/js/dynamic-name.js
 
 
 

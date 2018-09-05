@@ -10,6 +10,7 @@
   grid-auto-rows: minmax(auto, 1fr)
   grid-template-columns: 1fr
   justify-content: center
+  justify-items: center
 
   @media only screen and (min-width: $break-l)
     grid-template-columns: repeat(auto-fit, $post-width)
@@ -19,13 +20,13 @@
   height: 100vw
   position: relative
   display: inline-block
-  transition: box-shadow .4s $easing-function .2s, transform .4s $easing-function, opacity .4 $easing-function
+  transition: transform .4s $easing-function, opacity .4 $easing-function
   overflow: hidden
   background: $card-background
-  border-radius: $card-border-radius
   box-shadow: $double-shadow
+  border-radius: $card-border-radius
   cursor: pointer
-  will-change: transform, box-shadow
+  will-change: transform
   @media only screen and (min-width: $break-s)
     width: $post-width
     height: $post-height 
@@ -34,27 +35,25 @@
   content: ' '
   opacity: 1
   display: block
-  box-shadow: 0 12px 48px rgba(50,50,50,1)
   position: absolute
   z-index: -1
   width: 100%
   height: 100%
-  border-radius: $card-border-radius
   overflow: auto
 
 .post:hover::before 
-  opacity: 1
+  //opacity: 1
 
-// No longer needed since the animation is done using anime.js
 .post:hover
-  //transform: scale(1.03)
+  transform: scale(1.02)
   //box-shadow: 0 12px 48px rgba(50,50,50,.2), 0 2px 8px rgba(50,50,50,0.1)
 
 .post:hover .post__thumbnails
-  &>img
-    transform: scale(1.02) 
-   
+ 
   &.landscape
+    &>img
+      transform: scale(1.03) translateY(1%)
+    
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $exp: ($i - 1) 
@@ -64,11 +63,14 @@
         opacity: pow(.7, $exp)
 
   &.portrait 
+    &>img
+      transform: scale(1.03) translateY(1%)
+
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $exp: ($i - 1) 
         $factor-size: pow(.93, $exp)
-        $factor-translate: pow(1.05, $exp)
+        $factor-translate: pow(1.025, $exp)
         transform: scale(1 * $factor-size) translateY(-6% * $exp * $factor-translate) 
         transition-delay: .03s * $exp
         opacity: pow(.7, $exp)
@@ -78,6 +80,7 @@
   height: 100%
   width: 100%
   z-index: 100
+  text-decoration: none
 
 .post-container
   display: grid
@@ -101,15 +104,12 @@
   padding: $post-padding
   padding-top: 1rem
   z-index: 2
-  border-bottom-right-radius: $card-border-radius
-  border-bottom-left-radius: $card-border-radius
 
 .post__thumbnails
   align-self: center
   top: 25%
   position: absolute
-  transform-style: preserve-3d
-  transform: translate3d(0,0,0)
+  will-change: transform
 
   // TODO: Calculating the value of the dynamic width to decrease pressure between breaking points
   // and make the transition seamless 
@@ -164,7 +164,7 @@
   border-radius: 3px
   position: absolute
   z-index: 10
-  box-shadow: 0 12px 48px rgba(50,50,50,0.4)
+  //box-shadow: 0 12px 48px rgba(50,50,50,0.4)
   will-change: transform
   
 .post__thumbnail--background
@@ -186,6 +186,8 @@
   flex-direction: row
   justify-content: space-between
   z-index: 20
+  a 
+    text-decoration: none
 
 .post__header--tags
   display: inline-flex

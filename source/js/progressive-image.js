@@ -79,7 +79,7 @@ if (window.addEventListener
           var pImg = item.querySelector && item.querySelector('img.preview');
           if (pImg != null) {
             e.target.alt = pImg.alt || '';
-            console.log(pImg);
+            //console.log(pImg);
             pImg.style.opacity = 0;
 
             pImg.addEventListener("transitionend", function(event) {

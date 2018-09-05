@@ -4,7 +4,7 @@ Section is a simple theme for Hexo — static blog generator framework — that 
 ## TO-DO
 
 ### Performance
-* Work out the performance issues on some platforms
+* Work out the performance issues on some platforms (especially on Firefox)
 * Compress and minimize the files, reduce the overall weight of the theme
 * Add handling events for mobile browsers (ontouch, ontap)
 * Compress the class names
@@ -13,6 +13,9 @@ Section is a simple theme for Hexo — static blog generator framework — that 
 
 ### UI / UX
 * Add more customization options in the config file
+* Simplify the article feed. The design of the posts need to be updated. 
+* Asynchronous loading and a new way for displaying the articles (e.g. a dialogue window)
+
 
 ### Other
 * Get a better score than https://developers.google.com/speed/pagespeed/insights/ - meaning fix all the issues

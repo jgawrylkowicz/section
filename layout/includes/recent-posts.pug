@@ -1,38 +1,45 @@
+-let totalDelay = 0;
 section
-  h1
-    !="Projects" 
-  p!="Here you can find some projects that I've been working on. Some of them were created in the course of my bachelor degree and some are personal."
+  div
+    h1(data-aos='aos-fade-text'  data-aos-delay=totalDelay)
+      -totalDelay+=100;
+      !="Projects" 
+    p(data-aos='aos-fade-text' data-aos-anchor=".projects section h1" data-aos-delay=totalDelal)
+      -totalDelay+=100;
+      !="Here you can find some projects that I've been working on. Some of them were created in the course of my bachelor degree and some are personal."
 
-section(class="posts")
-  if page.posts.length > 0
-    each post in page.posts.sort('date', -1).limit(10).toArray()
+  div(class="posts" )
 
-      div(class="post")
-        a(class='post-link', data-pjax href=config.root + post.path)
-        div(class="post-container")
-          div(class="post__header" style={background: post.color.primary})
-            
-            div(class="post__header--tags")
-              !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
-              !=date(post.date, date_format)
+    if page.posts.length > 0
+      -let index = 0;
+      each post in page.posts.sort('date', -1).limit(10).toArray()
 
-            h2(class="post__header--title")
-              a(href=config.root + post.path)= post.title
-            
-            if post.thumbnail
+        div(class="post"  data-aos='aos-fade-posts'  data-aos-anchor=".projects section h1" data-aos-delay= (totalDelay + index++ * 100))
+          a(class='post-link', data-pjax href=config.root + post.path)
+          div(class="post-container")
+            div(class="post__header" style={background: post.color.primary})
+              
+              div(class="post__header--tags")
+                !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
+                !=date(post.date, date_format)
 
-              div(class="post__thumbnails " + post.thumbnail.orientation)
-                
-                img(class="post__thumbnail", src=post.thumbnail.url width="100%" height="100%")
-                div(class="post__thumbnail--background")  
-                div(class="post__thumbnail--background")
-                div(class="post__thumbnail--background")  
-            if false
-              a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
-                        
-          div(class="post__footer")
-            div(class='post__excerpt')
-              !=post.description
+              h3(class="post__header--title")
+                a(href=config.root + post.path)= post.title
+              
+              if post.thumbnail
 
-            if false
-              a(class='post__link', data-pjax href=config.root + post.path)="More"
+                div(class="post__thumbnails " + post.thumbnail.orientation)
+                  
+                  img(class="post__thumbnail", src=post.thumbnail.url width="100%" height="100%")
+                  div(class="post__thumbnail--background")  
+                  div(class="post__thumbnail--background")
+                  div(class="post__thumbnail--background")  
+              if false
+                a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
+                          
+            div(class="post__footer")
+              div(class='post__excerpt')
+                !=post.description
+
+              if false
+                a(class='post__link', data-pjax href=config.root + post.path)="More"

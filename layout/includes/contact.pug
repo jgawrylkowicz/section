@@ -1,10 +1,9 @@
 div(class="contact")
-  div(data-aos="fade-down" )
+  section(data-aos='aos-fade-text' )
     h1!="Contact"
     p!="Here you can find some ways of contacting me as well as links to my work. The repositories withe the showed projects are public and are free to use. If you have any questions regarding my work, let me know."
-  div
   
-  div(class="sns" data-aos="fade-down")
+  //section(class="sns" data-aos="fade-down")
     each values, label in theme.sns
       if values.url 
         a(href=values.url class="sns__link")

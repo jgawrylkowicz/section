@@ -44,7 +44,7 @@ $mod_2: 1.5 // desktop
 // Cards
 $max-card-width: 800px
 $card-border-radius: 1vh
-$background-color: rgb(246,249,252) //rgb(244, 247, 246) 
+$background-color: rgb(250,253,255) //rgb(244, 247, 246) 
 $sidebar-background-color: rgb(249,252,255)
 $topbar-background-color: $background-color
 $card-background: rgb(255,255,255)
@@ -58,8 +58,8 @@ $double-shadow: 0 3px 12px rgba(50,50,50,0.1), 0 1px 2px rgba(50,50,50,0.05)
 // Colors  
 $text-color: rgb(51, 51, 51)
 $subtext-color: rgb(101, 105, 109)
-$primary: rgb(42, 179, 132)
-$secondary: #AAB9C5 
+$primary: #004EFF
+$secondary: #F0569D
 
 // Others 
 $easing-function: cubic-bezier(.17,.67,.16,.99)
@@ -125,10 +125,29 @@ $easing-function: cubic-bezier(.17,.67,.16,.99)
   font-weight: 400
   src: local("IBM Plex Sans"), local("IBMPlexSans"), url("/fonts/IBMPlexSans-Regular.woff") format("woff")
 
-\::-moz-selection, ::selection
-  background: rgba(107, 79, 189, 0.4)
-  text-shadow: none
 
-::-webkit-scrollbar
-  width: 0
-  display: none
+[data-aos="aos-fade-text"] 
+  opacity: 0
+  transition-property: transform, opacity
+  transition-timing-function: $easing-function
+  transform: translateY(-1em)
+
+  &.aos-animate 
+    opacity: 1
+    transform: translateY(0)
+
+[data-aos="aos-fade-posts"] 
+  opacity: 0
+  transition-property: transform, opacity
+  transition-timing-function: $easing-function
+  transform: translateY(-4em)
+
+  &.aos-animate 
+    opacity: 1
+    transform: translateY(0)
+
+.no-delay
+  transition: transform 0.3s $easing-function 0s !important 
+  opacity: 1 !important
+  //transition-delay: 0 !important
+  //transition-duration: 300ms !important
