@@ -91,19 +91,29 @@ section
     +fluid-type('grid-gap', $min_width, $max_width, 32px,64px) 
     grid-template: 1fr / 1fr 1fr
     @media only screen and (max-width: $break-l)
-        grid-template: 1fr 1fr / 1fr
+        grid-template: 1fr minmax(50vh, 1fr ) / 1fr
   & > .section-bg
     background: #F2F2F2
     grid-column: 1 / 5
     grid-row: about-start / about-end
+  ion-icon 
+    color: $primary
+  span
+    padding-left: 1rem
+
+
 
 .contact
   display: contents
   & > section
     grid-area: contact 
-    max-width: 480px
+    max-width: 35em
+    display: flex
+    flex-direction: column
     margin-left: auto
     margin-right: auto
+    align-items: center
+    justify-content: center
     text-align: center
   & > .section-bg
     background: #0F0F0F
@@ -114,6 +124,10 @@ section
     color: rgba(255,255,255,1)
   p
     color: rgba(255,255,255,.7)
+  ion-icon 
+    color: rgba(255,255,255,.7)
+
+
 
 .projects
   display: contents
@@ -135,11 +149,13 @@ section
     display: flex
     align-items: center
     justify-content: center
-    p
+    span
       text-align: center  
       color: rgba(255,255,255,.7)
   & > .section-bg
     background: black 
     grid-area: bottom-bar / 1 / span 2 / span 4
+  ion-icon
+    color: $secondary
 .section-bg
   z-index: -1

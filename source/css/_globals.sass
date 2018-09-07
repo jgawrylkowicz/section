@@ -59,7 +59,7 @@ $double-shadow: 0 3px 12px rgba(50,50,50,0.1), 0 1px 2px rgba(50,50,50,0.05)
 $text-color: rgb(51, 51, 51)
 $subtext-color: rgb(101, 105, 109)
 $primary: #004EFF
-$secondary: #F0569D
+$secondary: rgba(240, 86, 157, 1)
 
 // Others 
 $easing-function: cubic-bezier(.17,.67,.16,.99)
@@ -151,3 +151,22 @@ $easing-function: cubic-bezier(.17,.67,.16,.99)
   opacity: 1 !important
   //transition-delay: 0 !important
   //transition-duration: 300ms !important
+
+[data-aos="aos-fade-pics"] 
+  //opacity: 0
+  transition-property: transform, opacity
+  transition-timing-function: $easing-function
+  transition-duration: .5s
+  transform: rotate(0deg)
+
+  
+  &.aos-animate 
+    //opacity: 1
+    &:first-of-type
+      transform: rotate(0deg)
+    &:nth-of-type(2)
+      transform: rotate(-10deg)
+      transition-delay: 100ms
+    &:nth-of-type(3)
+      transform: rotate(-20deg)
+      transition-delay: 200ms
