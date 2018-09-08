@@ -2,6 +2,7 @@
 @import 'layouts'
 @import 'article'
 @import 'posts'
+@import 'modal'
  
 body
   -moz-osx-font-smoothing: grayscale
@@ -262,21 +263,19 @@ ion-icon
   &:nth-of-type(3)
     z-index: 80
 
-
-#email
-  //@include underline($primary)
-
-
-// section 
-//   @for $i from 1 through 10
-//     & > :nth-child(#{$i})
-//       opacity: 0
-//       transform: translate(0, 40px)
-//       $delay: .15s * $i
-//       transition: transform .4s $easing-function $delay, opacity .4s $easing-function .2s
-
-// section.visible  
-//   & > *
-//     opacity: 1
-//     transform: translate(0, 0)
+.modal
+  position: fixed
+  margin: 2em
+  width: 100vw
+  height: 100vh
+  max-width: 750px
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  opacity: 0
+  z-index: -1
+  margin: auto
+  background: white
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,.2)
   

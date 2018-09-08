@@ -1,40 +1,24 @@
-extends includes/layout.pug
-block content
-  
-  //if (theme.thumbnail.automatic_background)
-    div(class="article__bg", style={background: lighten(page.color.primary, 35)})
-  //else 
-    //div(class="article__bg", style={background: page.color.background})
-    div(class="article__bg")
+div(class='modal-header')
+  div
+    div(class="article__header--tags" style={color: background})
+      !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
+      !=date(page.date, date_format)
+    h3(class="article__header--title")= page.title
+  ion-icon#close(name="close")
 
-  #article__img
-    a(class="progressive replace" 
-    alt="image" 
-    data-srcset= page.thumbnail.url_hq + " 800w," + page.thumbnail.url_hq + " 1200w"
-    data-sizes="100vw"
-    href=page.thumbnail.url_hq)
-      img#article_preview(class="preview" src=page.thumbnail.url_preview width="100%" height="100%")
-  
-  div(class="color-bar", style={background: page.color.primary} )
+#article__img
+  a(class="progressive replace" 
+  alt="image" 
+  data-srcset= page.thumbnail.url_hq + " 800w," + page.thumbnail.url_hq + " 1200w"
+  data-sizes="100vw"
+  href=page.thumbnail.url_hq)
+    img#article_preview(class="preview" src=page.thumbnail.url_preview width="100%" height="100%")
 
-  section(class="article__header")
-    div(class="article-container")
-
-      if page.tags.length > 0 
-      div(class="article__header--tags" style={color: background})
-        !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
-
-      div(class="article__header--date")
-        !=date(page.date, date_format)
-     
-      h1(class="article__header--title")= page.title
-      
-      p(class='article__header--description')=page.description
-
-  section(class="article__content")
-    div(class="article-container")
-      !=page.content
-              
+section(class="article__content")
+  //p(class='article__header--description')=page.description
+  div(class="article-container")
+    !=page.content
+            
 
 
   

@@ -80,19 +80,16 @@ favicon: /img/logo-128.png
 stylesheets:
 - /css/section.css
 - /css/aos.css
+- #/css/tingle.css
 
 # scripts loaded in the end of the body
 scripts:
-- /js/anime.min.js
-- /js/barba.min.js
-- /js/pace.min.js
-- /js/aos.js
+- /js/src/anime.min.js
+- /js/src/barba.min.js
+- /js/src/aos.js
+- /js/src/tingle.min.js
+- /js/src/modal.js
 - /js/config.min.js
-- #/js/scroll-behavior.js
-- /js/post-hover.js
-- #/js/progressive-image.js
-- #/js/top-bar.js
-- #/js/dynamic-name.js
 - https://unpkg.com/ionicons@4.4.2/dist/ionicons.js
 
 
