@@ -24,6 +24,10 @@ img:
 
 # main menu navigation
 menu:
+  Values:
+    url: /
+    icon: fa-home
+    id: 'values'
   Projects:
     url: /
     icon: fa-home
@@ -85,10 +89,8 @@ stylesheets:
 # scripts loaded in the end of the body
 scripts:
 - /js/src/anime.min.js
-- /js/src/barba.min.js
 - /js/src/aos.js
 - /js/src/tingle.min.js
-- /js/src/modal.js
 - /js/config.min.js
 - https://unpkg.com/ionicons@4.4.2/dist/ionicons.js
 

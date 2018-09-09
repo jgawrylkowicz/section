@@ -97,27 +97,6 @@ p
 ul
   line-height: $line-height
 
-.sns
-  display: flex
-  justify-content: space-around
-  margin: 5rem 0
-
-.sns__link
-  display: flex
-  flex-direction: column
-  align-items: center
-  max-width: 10em
-  margin: 1rem
-  text-align: center
-  transition: all .3s $easing-function
-
-  &>i
-    font-size: 4rem
-    padding-bottom: 1rem
-
-.sns__link:hover
-  transform: scale(1.2)
-
 // Container for the top information
 // fixed for mobile
 .top-bar
@@ -163,17 +142,6 @@ ul
   span
     color: $primary
 
-.pace 
-  -webkit-pointer-events: none
-  pointer-events: none
-  -webkit-user-select: none
-  -moz-user-select: none
-  user-select: none
-  
-.pace-inactive  .pace-progress
-  opacity: 0
-  transition: opacity .5s $easing-function
-
 .button--primary, .button--secondary
   padding: .5em 1.2em
   color: rgba(255,255,255, .9)
@@ -183,8 +151,6 @@ ul
   box-shadow: 0 4px 12px 0 rgba(0,0,0,.2)
   transition: background-color 1s cubic-bezier(.17,.67,.16,.99), color .3s cubic-bezier(.17,.67,.16,.99), transform .3s cubic-bezier(.17,.67,.16,.99) 
  
-
-
 .button--primary
   background-color: $primary
   &:hover
@@ -202,26 +168,6 @@ ul
 .button-container
   padding: 4em 0
 
-.pace .pace-progress 
-  background: #3CC8E7
-  position: fixed
-  z-index: 8000
-  top: 0
-  right: 100%
-  width: 100%
-  height: $color-bar-height
-
-.color-bar
-  z-index: 9000
-  height: $color-bar-height
-  width: 101vh
-  position: fixed
-  border-radius: 12px
-  top: 0
-  left: 0
-  right: 0
-  background: $primary
-
 .avatar
   border-radius: 50%
   margin: 2rem 0
@@ -230,13 +176,11 @@ ul
   height: auto
   width: 100%
 
-
 ion-icon 
   font-size: 1.1rem
   padding: 0 .5rem
   &:first-of-type
     padding-left: 0
-    //padding-right: .5rem !important
   &:last-of-type
     padding-right: 0
 
@@ -254,7 +198,7 @@ ion-icon
   height: 100%
   grid-area: pic
   border-radius: 0.2rem
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,.2)
+  box-shadow: $double-shadow
   background-size: cover
   &:first-of-type
     z-index: 100
@@ -262,20 +206,4 @@ ion-icon
     z-index: 90
   &:nth-of-type(3)
     z-index: 80
-
-.modal
-  position: fixed
-  margin: 2em
-  width: 100vw
-  height: 100vh
-  max-width: 750px
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  opacity: 0
-  z-index: -1
-  margin: auto
-  background: white
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,.2)
   

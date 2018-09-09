@@ -25,11 +25,9 @@ section
             h3(class="post__header--title")
               a(href=config.root + post.path)= post.title
             
-            if false
 
-              div(class="post__thumbnails " + post.thumbnail.orientation)
-                
-                img(class="post__thumbnail", src=post.thumbnail.url width="100%" height="100%")
+            img(class="post__thumbnail " + post.thumbnail.orientation, src=post.thumbnail.url)
+
             if false
               a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
                         

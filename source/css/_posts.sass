@@ -20,7 +20,7 @@
   height: 90vw
   position: relative
   display: inline-block
-  transition: transform .4s $easing-function, opacity .4 $easing-function
+  transition: transform .4s $easing-function, opacity .4 $easing-function, box-shadow .4 $easing-function
   overflow: hidden
   background: $card-background
   box-shadow: $double-shadow
@@ -41,39 +41,18 @@
   height: 100%
   overflow: auto
 
-.post:hover::before 
-  //opacity: 1
-
 .post:hover
   transform: scale(1.02)
-  //box-shadow: 0 12px 48px rgba(50,50,50,.2), 0 2px 8px rgba(50,50,50,0.1)
+  box-shadow: 0 10px 20px rgba(50,50,50,0.2), 0 1px 2px rgba(50,50,50,0.1)
 
 .post:hover .post__thumbnails
- 
   &.landscape
     &>img
-      transform: scale(1.03) translateY(1%)
+      transform: scale(1.02) translateY(1%)
     
-    @for $i from 2 through 5
-      &>.post__thumbnail--background:nth-child(#{$i})
-        $exp: ($i - 1) 
-        $factor-size: pow(.93, $exp)
-        $factor-translate: pow(1.05, $exp)
-        transform: scale(1 * $factor-size) translateY(-8% * $exp * $factor-translate)
-        opacity: pow(.7, $exp)
-
   &.portrait 
     &>img
-      transform: scale(1.03) translateY(1%)
-
-    @for $i from 2 through 5
-      &>.post__thumbnail--background:nth-child(#{$i})
-        $exp: ($i - 1) 
-        $factor-size: pow(.93, $exp)
-        $factor-translate: pow(1.025, $exp)
-        transform: scale(1 * $factor-size) translateY(-6% * $exp * $factor-translate) 
-        transition-delay: .03s * $exp
-        opacity: pow(.7, $exp)
+      transform: scale(1.02) translateY(1%)
 
 .post-link
   position: absolute
@@ -83,28 +62,22 @@
   text-decoration: none
 
 .post-container
-  //display: grid
-  //grid-template-columns: 1fr
-  //grid-template-rows: 1fr 8em
   height: 100%
   width: 100%
   padding: $post-padding
-  color: white
+  color: white 
 
-
-.post__footer
-  display: flex
-  flex-direction: column
-  background: $sidebar-background-color
+.post__thumbnail
+  width: 100%
   height: 100%
-  padding: $post-padding
-  padding-top: 1rem
-  z-index: 2
-
-.post__thumbnails
-  align-self: center
-  top: 25%
   position: absolute
+  left: 0
+  right: 0 
+  top: 0
+  bottom: 0
+  margin: auto
+  z-index: 10
+  box-shadow: $double-shadow
   will-change: transform
 
   // TODO: Calculating the value of the dynamic width to decrease pressure between breaking points
@@ -120,59 +93,15 @@
       width: $dynamic-width
       height: $dynamic-width * 0.5652
   
-    @for $i from 2 through 5
-      &>.post__thumbnail--background:nth-child(#{$i})
-        $exp: ($i - 1) 
-        $factor-size: pow(.95, $exp)
-        $factor-translate: pow(1.05, $exp)
-        transform: scale(1 * $factor-size) translateY(-5% * $exp  * $factor-translate) 
-        transition-delay: .03s * $exp
-        opacity: pow(.6, $exp)
-        border-radius: 3px
-
   &.portrait
-    width: $post-width  * 0.5652  * 1.2 
-    height: $post-width * 1.2
+    width: $post-width  * 0.5652  * .7
+    height: $post-width * .7
 
     @media only screen and (max-width: $break-s)
-      $dynamic-width: 65vw
-      width: $dynamic-width * 0.5652 * 1.5
-      height: $dynamic-width * 1.5
-
-    @for $i from 2 through 5
-      &>.post__thumbnail--background:nth-child(#{$i})
-        $exp: ($i - 1) 
-        $factor-size: pow(.95, $exp)
-        $factor-translate: pow(1.05, $exp)
-        transform: scale(1 * $factor-size) translateY(-3.5% * $exp * $factor-translate) 
-        transition-delay: .03s * $exp
-        opacity: pow(.6, $exp)
-        border-radius: 3px
-
-  &>img
-    transition: all .3s $easing-function
-  &>div
-    transition: all .3s $easing-function
- 
-.post__thumbnail
-  width: 100%
-  height: 100%
-  border-radius: 3px
-  position: absolute
-  z-index: 10
-  //box-shadow: 0 12px 48px rgba(50,50,50,0.4)
-  will-change: transform
+      $dynamic-width: 55vw
+      width: $dynamic-width * 0.5652 
+      height: $dynamic-width 
   
-.post__thumbnail--background
-  background-color: rgba(255,255,255,.6)
-  width: 100%
-  height: 100%
-  position: absolute
-  left: 0
-  right: 0
-  margin-left: auto
-  margin-right: auto
-
 .post__header--title
   position: relative
   margin-top: .1em

@@ -14,10 +14,9 @@ div(class='modal-header')
   href=page.thumbnail.url_hq)
     img#article_preview(class="preview" src=page.thumbnail.url_preview width="100%" height="100%")
 
-section(class="article__content")
+div(class="article__content")
   //p(class='article__header--description')=page.description
-  div(class="article-container")
-    !=page.content
+  !=page.content
             
 
 
