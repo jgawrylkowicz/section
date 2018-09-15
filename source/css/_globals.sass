@@ -171,3 +171,14 @@ $easing-function: cubic-bezier(0.165, 0.84, 0.44, 1)
     &:nth-of-type(3)
       transform: rotate(-20deg)
       transition-delay: 200ms
+
+[data-aos="aos-color"] 
+  color: white
+  transition-property: color
+  transition-timing-function: $easing-function
+  transition-duration: .5s
+  transition-delay: 2s
+  
+  &.aos-animate 
+    color: $secondary
+    

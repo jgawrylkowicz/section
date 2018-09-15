@@ -59,7 +59,7 @@ sns:
   github:
     url: https://github.com/jgawrylkowicz
     icon: logo-github
-    tooltip: 'Browse my github at https://github.com/jgawrylkowicz'
+    tooltip: 'Browse my projects at github'
   linkedin:
     url:
     icon: fa-linkedin
