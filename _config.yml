@@ -46,36 +46,32 @@ thumbnail:
 sns:
   email:
     url: mailto:jgawrylkowicz@gmail.com
-    icon: fa-envelope
-    info: "Send me an email"
+    icon: mail
+    tooltip: 'Send me an email to jgawrylkowicz@gmail.com'
   facebook:
     url: 
-    icon: fa-facebook
-    info: "Jakub Gawrylkowicz"
-  twitter:
-    url: 
-    icon: fa-twitter
-    info:
+    icon: logo-facebook
+    tooltip: 
   googleplus:
     url:
     icon: fa-googleplus
-    info:
+    tooltip: 
   github:
     url: https://github.com/jgawrylkowicz
-    icon: fa-github
-    info: "See my other projects on Github"
+    icon: logo-github
+    tooltip: 'Browse my github at https://github.com/jgawrylkowicz'
   linkedin:
     url:
     icon: fa-linkedin
-    info:
+    tooltip: 
   telegram:
     url: 
     icon: fa-telegram
-    info:
+    tooltip: 
   source code:
-    url: https://github.com/jgawrylkowicz/sidebar
-    icon: fa-code
-    info: "See the <code>source code</code>"
+    url: https://github.com/jgawrylkowicz/section
+    icon: code
+    tooltip: 'See the source code at github'
 
 # Miscelaneous
 favicon: /img/logo-128.png

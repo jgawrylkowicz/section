@@ -149,24 +149,26 @@ ul
   border-radius: .3em
   margin: 2rem 0 
   box-shadow: 0 4px 12px 0 rgba(0,0,0,.2)
-  transition: background-color 1s cubic-bezier(.17,.67,.16,.99), color .3s cubic-bezier(.17,.67,.16,.99), transform .3s cubic-bezier(.17,.67,.16,.99) 
+  transition: background-color .3s $easing-function, color .3s $easing-function, transform .3s $easing-function, box-shadow .3s $easing-function
  
 .button--primary
-  background-color: $primary
+  background-color: desaturate($primary, 10) 
   &:hover
     color: white
-    background-color: saturate($primary, 20) 
+    background-color: saturate($primary, 10) 
     transform: translateY(-2px)
+    box-shadow: 0 4px 12px 0 transparentize($primary, .7)
 
 .button--secondary
-  background-color: $secondary
+  background-color: desaturate($secondary, 10)
   &:hover
     color: white
-    background-color: saturate($secondary, 20) 
+    background-color: saturate($secondary, 10) 
     transform: translateY(-2px)
+    box-shadow: 0 4px 12px 0 transparentize($secondary, .7)
       
 .button-container
-  padding: 4em 0
+  padding: 2em 0
 
 .avatar
   border-radius: 50%
@@ -176,14 +178,75 @@ ul
   height: auto
   width: 100%
 
-ion-icon 
-  font-size: 1.1rem
-  padding: 0 .5rem
-  &:first-of-type
-    padding-left: 0
-  &:last-of-type
-    padding-right: 0
+.sns-container
+  display: flex
+  align-content: center
+  align-items: center
+  justify-items: center
+  flex-direction: row
 
+#close, .sns-link
+  display: flex
+  align-content: center
+  align-items: center
+  justify-items: center
+  justify-content: center
+  transition: background .3s $easing-function
+  border-radius: 50%
+
+
+.sns-link
+  display: flex
+  width: 3rem
+  height: 3rem
+  margin: 0 1rem
+  ion-icon
+    transition: color .15s $easing-function
+    font-size: 1.3rem
+    z-index: 10
+  &:hover
+    background: rgba(255,255,255,.05)
+    ion-icon
+      color: white
+    &::after
+      opacity: 1
+      border-radius: 6px
+      transform: scale(1) translateY(4rem)
+      transition: transform .5s $easing-function .3s , opacity .15s $easing-function .5s, border-radius .5s $easing-function .3s
+      width: 100%
+  &:active
+    background: rgba(255,255,255,.2)
+  &::after
+    content: attr(data-tooltip)
+    opacity: 0
+    position: absolute
+    width: 3rem
+    transform: scale(.2)
+    font-size: .8rem
+    background-color: black
+    color: #fff
+    text-align: center
+    border-radius: 50%
+    padding: .5rem .5rem
+    z-index: -1
+    overflow: hidden
+    transition: opacity .2s $easing-function, transform .5s $easing-function, width .5s $easing-function
+   
+
+
+#close
+  height: 3.6rem
+  width: 3.6rem
+  display: flex
+  ion-icon
+    transition: color .2s $easing-function
+    font-size: 2rem
+  &:hover
+    background: rgba(0,0,0,.05)
+    ion-icon
+      color: black
+  &:active
+    background: rgba(0,0,0,.2)
 .pics
   width: 100%
   height: 100%

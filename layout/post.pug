@@ -4,7 +4,8 @@ div(class='modal-header')
       !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
       !=date(page.date, date_format)
     h3(class="article__header--title")= page.title
-  ion-icon#close(name="close")
+  a#close
+    ion-icon(name="close")
 
 #article__img
   a(class="progressive replace" 

@@ -20,13 +20,13 @@
   height: 90vw
   position: relative
   display: inline-block
-  transition: transform .4s $easing-function, opacity .4 $easing-function, box-shadow .4 $easing-function
+  transition: transform .4s $easing-function, opacity .4s $easing-function, box-shadow .4s $easing-function
   overflow: hidden
   background: $card-background
   box-shadow: $double-shadow
   border-radius: $card-border-radius
   cursor: pointer
-  will-change: transform
+  will-change: transform, box-shadow
   @media only screen and (min-width: $break-s)
     width: $post-width
     height: $post-height 
@@ -42,8 +42,8 @@
   overflow: auto
 
 .post:hover
-  transform: scale(1.02)
-  box-shadow: 0 10px 20px rgba(50,50,50,0.2), 0 1px 2px rgba(50,50,50,0.1)
+  //transform: scale(1.02)
+  box-shadow: 0 0 2rem rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,0.1)
 
 .post:hover .post__thumbnails
   &.landscape

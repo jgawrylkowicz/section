@@ -5,18 +5,13 @@ div(class="contact")
     h1(data-aos='aos-fade-text' data-aos-anchor=".contact section h1" data-aos-delay=50)!="Do you have any questions? <br> I am happy to help!"
     p(data-aos='aos-fade-text' data-aos-anchor=".contact section h1" data-aos-delay=100)!="Here you can find some ways of contacting me as well as links to my work. The repositories withe the showed projects are public and are free to use. If you have any questions regarding my work, let me know."
 
-    a(class='button--secondary' href='#' data-aos='aos-fade-text' data-aos-anchor=".contact section h1" data-aos-delay=300)!='Contact'
-    div
-      ion-icon(name="logo-github" data-aos-anchor=".contact section h1" data-aos='aos-fade-text' data-aos-delay=350)
-      ion-icon(name="mail" data-aos-anchor=".contact section h1" data-aos='aos-fade-text' data-aos-delay=400)
-
-  //section(class="sns" data-aos="fade-down")
-    each values, label in theme.sns
-      if values.url 
-        a(href=values.url class="sns__link")
-          i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'}) 
-          h4!=values.info
-    
+    div(class="button-container" data-aos='aos-fade-text' data-aos-anchor=".contact section h1" data-aos-delay=300)
+      a(class='button--secondary' href='#' )!='Contact'
+    div(class="sns-container" data-aos-anchor=".contact section h1" data-aos='aos-fade-text' data-aos-delay=350)
+      each values, label in theme.sns
+        if values.url 
+          a(class="sns-link" href=values.url data-tooltip=values.tooltip)
+            ion-icon(name=values.icon)
     
   div(class="section-bg")
 
